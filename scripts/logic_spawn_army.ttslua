@@ -268,8 +268,7 @@ function spawn_army(army_name, army, is_red_player, command_color)
     end
 
     spawn_note(army_name,
-        .. army['data']['list']
-        .. maker,
+        army['data']['list'] .. maker,
         note_pos,
         angle)
     print_important('Army deployed: ' .. army_name .. ', see chat for options')

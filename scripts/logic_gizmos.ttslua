@@ -6,15 +6,15 @@ end
 
 function get_strokes_future_position(base_obj, transform)
     local stroke_points = {}
-    table.insert(stroke_points, 
+    table.insert(stroke_points,
         set_vec_to_above_terrain(transform['corners']['topright']))
-    table.insert(stroke_points, 
+    table.insert(stroke_points,
         set_vec_to_above_terrain(transform['corners']['topleft']))
-    table.insert(stroke_points, 
+    table.insert(stroke_points,
         set_vec_to_above_terrain(transform['corners']['botleft']))
-    table.insert(stroke_points, 
+    table.insert(stroke_points,
         set_vec_to_above_terrain(transform['corners']['botright']))
-    table.insert(stroke_points, 
+    table.insert(stroke_points,
         set_vec_to_above_terrain(transform['corners']['topright']))
 
     local color = g_gizmo_color_player_red
@@ -56,7 +56,7 @@ function get_strokes_zoc(base_obj, transform)
     for _, paux in ipairs(stroke_points) do
         local paux_rotated = rotate_point(paux, p, rotation)
         paux['x'] = paux_rotated['x']
-        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y'] 
+        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y']
         paux['z'] = paux_rotated['z']
     end
 
@@ -169,7 +169,7 @@ function get_strokes_fire_arc(base_obj, transform, shooting_range, max_width)
     for _, paux in ipairs(stroke_points) do
         local paux_rotated = rotate_point(paux, p, rotation)
         paux['x'] = paux_rotated['x']
-        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y'] 
+        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y']
         paux['z'] = paux_rotated['z']
     end
 
@@ -187,12 +187,24 @@ function get_strokes_fire_arc(base_obj, transform, shooting_range, max_width)
     }
 end
 
-function get_strokes_bow(base_obj, transform)
-    return get_strokes_fire_arc(base_obj, transform, g_bow_range, g_base_width_inches)
+function get_strokes_ms(base_obj, transform)
+    return get_strokes_fire_arc(base_obj, transform, g_ms_range, g_base_width_inches)
+end
+
+function get_strokes_li(base_obj, transform)
+    return get_strokes_fire_arc(base_obj, transform, g_li_range, g_base_width_inches)
+end
+
+function get_strokes_jg(base_obj, transform)
+    return get_strokes_fire_arc(base_obj, transform, g_jg_range, g_base_width_inches)
 end
 
 function get_strokes_art(base_obj, transform)
     return get_strokes_fire_arc(base_obj, transform, g_art_range, g_base_width_inches)
+end
+
+function get_strokes_hart(base_obj, transform)
+    return get_strokes_fire_arc(base_obj, transform, g_horse_art_range, g_base_width_inches)
 end
 
 function get_strokes_wwg(base_obj, transform)
@@ -306,7 +318,7 @@ function get_strokes_around(base_obj, transform, range, color)
     for _, paux in ipairs(stroke_points) do
         local paux_rotated = rotate_point(paux, p, rotation)
         paux['x'] = paux_rotated['x']
-        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y'] 
+        paux['y'] = set_vec_to_above_terrain(paux_rotated)['y']
         paux['z'] = paux_rotated['z']
     end
 
@@ -328,17 +340,24 @@ function get_strokes_base_pos(obj, transform)
 
     table.insert(strokes, get_strokes_future_position(obj, transform))
 
-    if str_has_substr(obj.getName(), 'Bw')
-       or str_has_substr(obj.getName(), 'Cb')
-       or str_has_substr(obj.getName(), 'Lb') then
-        table.insert(strokes, get_strokes_bow(obj, transform))
-    elseif str_has_substr(obj.getName(), 'Art') then
+    local name = obj.getName()
+
+    if str_has_substr(name, 'Ms')
+       or str_has_substr(name, 'Gs') then
+        table.insert(strokes, get_strokes_ms(obj, transform))
+    elseif str_has_substr(name, 'LI') then
+        table.insert(strokes, get_strokes_li(obj, transform))
+    elseif str_has_substr(name, 'Jg') then
+        table.insert(strokes, get_strokes_jg(obj, transform))
+    elseif str_has_substr(name, 'FA') then
         table.insert(strokes, get_strokes_art(obj, transform))
-    elseif str_has_substr(obj.getName(), 'WWg') then
-        table.insert(strokes, get_strokes_wwg(obj, transform))
+    elseif str_has_substr(name, 'HA')
+           or str_has_substr(name, 'CR') then
+        table.insert(strokes, get_strokes_hart(obj, transform))
     end
 
-    if str_has_substr(obj.getName(), 'Gen') then
+    if str_has_substr(name, 'CinC')
+       or str_has_substr(name, 'SubCmd')then
         table.insert(strokes, get_strokes_command(obj, transform, g_command_distance_short))
         table.insert(strokes, get_strokes_command(obj, transform, g_command_distance_long))
     end
@@ -593,17 +612,17 @@ function draw_deployment_lines()
     local h = size['z'] / scale['z']
 
     local angle = normalize_angle(math.rad(gametable.getRotation()['y']))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment('topright', g_gizmo_color_player_blue, angle, w, h))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment('topleft', g_gizmo_color_player_blue, angle, w, h))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment_between('top', g_gizmo_color_player_blue, angle, w, h))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment('botright', g_gizmo_color_player_red, angle, w, h))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment('botleft', g_gizmo_color_player_red, angle, w, h))
-    table.insert(strokes, 
+    table.insert(strokes,
         get_strokes_deployment_between('bot', g_gizmo_color_player_red, angle, w, h))
 
         gametable.setVectorLines(strokes)
@@ -685,22 +704,22 @@ function draw_pickup_strokes(picked_up_object)
         thickness = g_line_thickness,
         rotation  = {0,0,0}
     })
-    
+
     local transform = calculate_transform(picked_up_object)
     local height = g_picked_base_initial_transform['position'].y
-    transform['corners']['topright'] = { 
+    transform['corners']['topright'] = {
         x = transform['corners']['topright'].x, y = height, z = transform['corners']['topright'].z
     }
-    transform['corners']['topleft'] = { 
+    transform['corners']['topleft'] = {
         x = transform['corners']['topleft'].x, y = height, z = transform['corners']['topleft'].z
     }
-    transform['corners']['botleft'] = { 
+    transform['corners']['botleft'] = {
         x = transform['corners']['botleft'].x, y = height, z = transform['corners']['botleft'].z
     }
-    transform['corners']['topright'] = { 
+    transform['corners']['topright'] = {
         x = transform['corners']['topright'].x, y = height, z = transform['corners']['topright'].z
     }
-    transform['corners']['botright'] = { 
+    transform['corners']['botright'] = {
         x = transform['corners']['botright'].x, y = height, z = transform['corners']['botright'].z
     }
     table.insert(strokes, get_strokes_future_position(picked_up_object, transform))
@@ -708,5 +727,5 @@ function draw_pickup_strokes(picked_up_object)
 end
 
 function draw_transforms()
-    
+
 end

@@ -14,11 +14,16 @@ g_bases_position = g_base_height_inches + g_table_thickness + g_base_height_tabl
 
 g_terrain_pos = 1.2
 
--- Bow range in inches
-g_bow_range = 2
+-- Musket range in inches
+g_ms_range = 2
+g_li_range = 3
+g_jg_range = 4
 
 -- Artillery range inches
-g_art_range = 5
+g_art_range = 10
+
+-- Horse artillery range inches
+g_horse_art_range = 6
 
 -- Initial distance spawns from the center
 g_spawn_from_center_in = 16
