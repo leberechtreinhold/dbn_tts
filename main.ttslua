@@ -9,11 +9,7 @@
 #include scripts/data/data_tables
 #include scripts/data/data_terrain
 #include scripts/data/data_troops
-#include scripts/data/data_troops_greek_successors
-#include scripts/data/data_armies_book_I
-#include scripts/data/data_armies_book_II
-#include scripts/data/data_armies_book_III
-#include scripts/data/data_armies_book_IV
+#include scripts/data/data_armies_plain
 #include scripts/log
 #include scripts/utilities_lua
 #include scripts/utilities
@@ -28,7 +24,7 @@
 
 function onload()
     print_info('----------------------------------------------')
-    print_info('                       DBA 2.2 v1.23.0 ')
+    print_info('                       DBN 2.1 v0.0.1 ')
     print_info('----------------------------------------------\n\nCheck the Notebook for instructions.')
 
     Wait.time(main_loop, g_seconds_main_loop, -1)
@@ -36,7 +32,6 @@ function onload()
     g_log_enabled = false
     make_scenery_non_interactable()
     reset_state()
-    spawn_proxy_bases()
     spawn_all_dice()
     spawn_dead_zones()
 
@@ -146,8 +141,6 @@ function onChat(message, player)
 
         print_important('Army selected: ' .. army_name .. '')
         print_info('List: ' .. army['data']['list'])
-        print_info('Agressiveness: ' .. army['data']['aggresiveness']
-            .. ' Terrain: ' .. army['data']['terrain'])
         return false
     end
 

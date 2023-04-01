@@ -1,0 +1,219 @@
+armies["Plain"] = {}
+
+armies["Plain"]["Generic - Everything (Plain)"] = {
+    data = {
+        aggresiveness = 2,
+        terrain = 'Arable',
+        list = '1x3Bd (Gen), 8x4Bw, 3x2Ps'
+    },
+    base1 = {
+        name = 'CinC',
+        base = 'tile_plain_CinC_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base2 = {
+        name = 'SubCmd',
+        base = 'tile_plain_SCmd_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base3 = {
+        name = 'Ms',
+        base = 'tile_plain_Ms_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base4 = {
+        name = 'MsE',
+        base = 'tile_plain_MsE_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base5 = {
+        name = 'MsM',
+        base = 'tile_plain_MsM_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base6 = {
+        name = 'MsOG',
+        base = 'tile_plain_MsOG_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base7 = {
+        name = 'LEM',
+        base = 'tile_plain_LEM_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base8 = {
+        name = 'Jg',
+        base = 'tile_plain_Jg_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base9 = {
+        name = 'JgE',
+        base = 'tile_plain_JgE_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base10 = {
+        name = 'JgM',
+        base = 'tile_plain_JgM_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base11 = {
+        name = 'Gs',
+        base = 'tile_plain_Gs_40x20',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base12 = {
+        name = 'LI',
+        base = 'tile_plain_LI_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base13 = {
+        name = 'LIM',
+        base = 'tile_plain_LIM_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base14 = {
+        name = 'LIE',
+        base = 'tile_plain_LIE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base15 = {
+        name = 'LC',
+        base = 'tile_plain_LC_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base16 = {
+        name = 'LCM',
+        base = 'tile_plain_LCM_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base17 = {
+        name = 'LCE',
+        base = 'tile_plain_LCE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base18 = {
+        name = 'LCOG',
+        base = 'tile_plain_LCOG_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base19 = {
+        name = 'HC',
+        base = 'tile_plain_HC_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base20 = {
+        name = 'HCE',
+        base = 'tile_plain_HCE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base21 = {
+        name = 'HCM',
+        base = 'tile_plain_HCM_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base22 = {
+        name = 'HCOG',
+        base = 'tile_plain_HCOG_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base23 = {
+        name = 'SC',
+        base = 'tile_plain_SC_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base24 = {
+        name = 'SCM',
+        base = 'tile_plain_SCM_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base25 = {
+        name = 'SCE',
+        base = 'tile_plain_SCE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base26 = {
+        name = 'IC',
+        base = 'tile_plain_ICE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base27 = {
+        name = 'ICE',
+        base = 'tile_plain_ICE_40x30',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base28 = {
+        name = 'FA',
+        base = 'tile_plain_FA_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base29 = {
+        name = 'FAM',
+        base = 'tile_plain_FAM_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base30 = {
+        name = 'FAE',
+        base = 'tile_plain_FAE_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base31 = {
+        name = 'HA',
+        base = 'tile_plain_HA_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base32 = {
+        name = 'HAM',
+        base = 'tile_plain_HAM_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base33 = {
+        name = 'HAE',
+        base = 'tile_plain_HAE_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base34 = {
+        name = 'CR',
+        base = 'tile_plain_CR_40x40',
+        n_models = 0,
+        ignore_terrain = true
+    },
+    base35 = {
+        name = 'BT',
+        base = 'tile_plain_BT_40x80',
+        n_models = 0,
+        ignore_terrain = true
+    }
+}

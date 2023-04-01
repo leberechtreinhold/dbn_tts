@@ -112,7 +112,7 @@ function get_initial_army()
     else
         g_book_selected = first_key_table(armies)
         book = armies[g_book_selected]
-    
+
         g_army_selected = first_key_table(book)
         army = armies[g_book_selected][g_army_selected]
     end
@@ -122,7 +122,7 @@ end
 g_filter_armies_models = false
 function on_filter_models(player, value, id)
     g_filter_armies_models = value == "True"
-    
+
     local book, army = get_initial_army()
     print_debug('Selected army is ' .. g_army_selected)
 
@@ -176,15 +176,15 @@ function on_book_selected(player, value, id)
     local i = 1
     local selected_book_index = 1
     for book_name, book_armies in pairs(armies) do
-        
+
         if not g_filter_armies_models then
             if book_name == g_book_selected then
                 selected_book_index = i
             end
-            i = i + 1        
+            i = i + 1
         end
 
-        if g_filter_armies_models 
+        if g_filter_armies_models
             and book_has_an_army_with_models(book_name) then
 
             if book_name == g_book_selected then
@@ -192,7 +192,7 @@ function on_book_selected(player, value, id)
             end
             i = i + 1
         end
-        
+
     end
 
     if not g_filter_armies_models then
@@ -230,18 +230,6 @@ function on_army_selected(player, value, id)
     print_debug('Selected army is ' .. g_army_selected)
 
     update_authors_text(army)
-
-    if str_has_substr(g_army_selected, "(Plain)") then
-        UI.setValue('text_ag_terr', 
-            'Aggresiveness: ' .. army['data']['aggresiveness']
-            .. ', Terrain: ' .. army['data']['terrain']
-            .. ', Flat bases')
-    else
-        UI.setValue('text_ag_terr', 
-            'Aggresiveness: ' .. army['data']['aggresiveness']
-            .. ', Terrain: ' .. army['data']['terrain']
-            .. ', Bases with models')
-    end
 end
 
 g_color_spawn_army_selected = 'Red'
@@ -469,8 +457,8 @@ function on_wheel(player, value, id)
     UI.setAttribute('button_push_back', 'interactable', false)
 end
 
-function preview_wheel(objs_if_first_time)    
-    local distance = wheel_group(objs_if_first_time, 
+function preview_wheel(objs_if_first_time)
+    local distance = wheel_group(objs_if_first_time,
         math.rad(g_degrees_wheeling), g_current_orientation)
 
     if distance < 0 then
@@ -496,7 +484,7 @@ function on_make_wheeling(player, value, id)
     UI.setAttribute('button_move_forward', 'interactable', true)
     UI.setAttribute('button_wheel', 'interactable', true)
     UI.setAttribute('button_push_back', 'interactable', true)
-    
+
     Global.setVectorLines({})
 end
 

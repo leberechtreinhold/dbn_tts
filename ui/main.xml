@@ -190,7 +190,7 @@
         </Row>
         <Row preferredHeight="40">
             <Cell columnSpan="20" dontUseTableCellBackground="true">
-                <Text id="text_ag_terr" fontSize="20">Aggresiveness: 2, Terrain: Arable, Flat bases</Text>
+                <Text id="text_ag_terr" fontSize="20">Flat bases</Text>
             </Cell>
         </Row>
         <Row>
@@ -238,7 +238,7 @@
                 <Text fontSize="16">Orientation:</Text>
             </Cell>
             <Cell columnSpan="4" dontUseTableCellBackground="true">
-                <ToggleGroup id="togglegroup_orientation" 
+                <ToggleGroup id="togglegroup_orientation"
                     onValueChanged="on_change_orientation_wheel">
                     <HorizontalLayout>
                         <Toggle id="toggle_wheel_left">Left</Toggle>

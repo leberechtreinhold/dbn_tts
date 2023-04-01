@@ -268,8 +268,6 @@ function spawn_army(army_name, army, is_red_player, command_color)
     end
 
     spawn_note(army_name,
-        'Agressiveness: ' .. army['data']['aggresiveness'] .. '\n'
-        .. 'Terrain: ' .. army['data']['terrain'] .. '\n'
         .. army['data']['list']
         .. maker,
         note_pos,
@@ -287,6 +285,7 @@ function get_author_tile(tilename)
 end
 
 function get_author_model(modelname)
+    print_debug('Getting author of ' .. modelname)
     local model = _G[modelname]
     return model['author']
 end
@@ -422,7 +421,7 @@ function change_bases_to_terrain(terrain_type)
     local bases = filter_bases(all_objs)
     for _,base in ipairs(bases) do
         local name = base.getName()
-        if g_bases[name] ~= nil 
+        if g_bases[name] ~= nil
             and not str_has_substr(g_bases[name]['tile'], 'plain') then
 
             print_debug('Changing ' .. name)
