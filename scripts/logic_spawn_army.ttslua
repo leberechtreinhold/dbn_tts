@@ -1,0 +1,651 @@
+
+g_base_index = 1
+g_bases = {}
+
+function add_context_menu_base(base_obj)
+    base_obj.clearContextMenu()
+    base_obj.addContextMenuItem("Move forward single", function()
+        local moved_paces = move_base(base_obj, g_paces_movement)
+        print_info(base_obj.getName() .. ' ' .. moved_paces .. ' paces forward')
+    end)
+    base_obj.addContextMenuItem("Move back single", function()
+        local moved_paces = move_base(base_obj, -g_paces_movement)
+        print_info(base_obj.getName() .. ' ' .. moved_paces .. ' paces backwards')
+    end)
+    base_obj.addContextMenuItem("Push forward single", function()
+        push_forward(base_obj)
+    end)
+    base_obj.addContextMenuItem("Push back single", function()
+        push_back(base_obj)
+    end)
+    base_obj.addContextMenuItem("Turn around", function()
+        turn_around_base(base_obj)
+    end)
+end
+
+function add_context_menu_table(table_obj)
+    table_obj.addContextMenuItem('Rotate 90º', function()
+        rotate_table()
+    end)
+    table_obj.addContextMenuItem('Fix terrain and lock', function()
+        fix_terrain_and_lock()
+    end)
+    table_obj.addContextMenuItem('Toggle rulers', function()
+        toggle_deployment_ruler()
+    end)
+end
+
+function toggle_deployment_ruler()
+    g_deployment_lines_enabled = not g_deployment_lines_enabled
+    if g_deployment_lines_enabled then
+        draw_deployment_lines()
+    else
+        remove_deployment_lines()
+    end
+end
+
+function on_clone(source_obj, new_obj)
+    local name = source_obj.getName()
+    print_info(name .. " has been duplicated.")
+    local new_name = name .. " clone " .. new_obj.getGUID()
+    new_obj.setName(new_name)
+    g_bases[new_name] = {
+        tile = g_bases[name]['tile'],
+        is_red_player = g_bases[name]['is_red_player']
+    }
+    new_obj.clearContextMenu()
+    add_context_menu_base(new_obj)
+
+end
+
+function onObjectSpawn(new_obj)
+    local name = new_obj.getName()
+    local my_guid = new_obj.getGUID()
+    if name ~= nil and str_starts_with(name, "base") then
+        -- Check if the name as an old one
+        local all_objs = getAllObjects()
+        local bases = filter_bases(all_objs)
+        local found_base = nil
+        for _,base in ipairs(bases) do
+            if base.getName() == name and base.getGUID() ~= my_guid then
+                found_base = base
+                break
+            end
+        end
+
+        if found_base ~= nil then
+            on_clone(found_base, new_obj)
+        end
+    end
+end
+
+function spawn_base(base, pos, y_rotation, is_red_player, command_color)
+    print_debug('Spawning base #' .. g_base_index)
+    local overriden_tex = nil
+    if base['ignore_terrain'] == nil then
+        local type = from_toggle_number_to_table_type(g_current_table_type)
+
+        if tables[type] == nil then
+            type = 'grass'
+        end
+
+        if is_red_player then
+            overriden_tex = tables[type]['red_player_base_tex']
+        else
+            overriden_tex = tables[type]['blue_player_base_tex']
+        end
+    end
+
+    if base['name'] == nil then
+        print_error('One of the bases of this army has no name! Please report to us so we can fix it asap')
+        return
+    end
+    local base_obj = spawn_model(base['base'], pos, 0, nil, is_red_player, overriden_tex)
+
+    local base_name = 'base ' .. base['name'] .. ' #' .. g_base_index
+    base_obj.setName(base_name)
+    add_context_menu_base(base_obj)
+
+    g_base_index = g_base_index + 1
+    g_bases[base_name] = {
+        tile = base['base'],
+        is_red_player = is_red_player
+    }
+
+    if command_color ~= 'None' then
+        if command_color == 'Orange' then
+            base_obj.highlightOn({r=1,g=0.5,b=0}, 86400)
+        elseif command_color == 'Yellow' then
+            base_obj.highlightOn({r=1,g=1,b=0}, 86400)
+        elseif command_color == 'Green' then
+            base_obj.highlightOn({r=0.1,g=1,b=0.4}, 86400)
+        elseif command_color == 'Purple' then
+            base_obj.highlightOn({r=0.3,g=0,b=0.7}, 86400)
+        end
+    end
+
+    local n = base['n_models']
+    if n == 0 then
+        base_obj.setRotation({0, y_rotation, 0})
+        base_obj.auto_raise = false
+        return
+    end
+
+    local depth = get_depth_base(base['base'])
+    local half_depth = depth / 2
+    local half_width = g_base_width_inches / 2
+
+    local rows = 1
+    local columns = n
+    if n > 4 then
+        rows = math.floor(math.sqrt(n))
+        columns = math.ceil(n/rows)
+
+    end
+    local column_width = g_base_width_inches / (columns + 1)
+    local row_depth = depth / (rows + 1)
+
+    local model_name = base['model_data']
+    local meshes = {}
+
+    -- If the element has multiple nonfixed element, select randomly without
+    -- repeating
+    if model_name ~= nil then
+        meshes = calculate_random_meshes(n, _G[model_name]['mesh'])
+    end
+
+    for i=1,n do
+        local column = (i - 1) % columns + 1
+        local row = math.floor((i - 1) / columns) + 1
+
+        local random_rotation = math.random(-20, 20)
+        local random_rotation = math.random(0, 40) - 20
+        if str_has_substr(base_name, 'Camp') then
+            random_rotation = 0
+        end
+
+        local random_x = 0
+        local random_z = 0
+        if base['loose'] == true then
+            random_x = random_float(-g_max_loose_spawn, g_max_loose_spawn)
+            random_z = random_float(-g_max_loose_spawn, g_max_loose_spawn)
+        end
+
+        local relative_pos = {
+            x = pos['x'] + column * column_width - half_width + random_x,
+            y = pos['y'] + g_base_height_inches / 2,
+            z = pos['z'] + row * row_depth - half_depth + random_x
+        }
+
+        local this_model_name = model_name
+        local soldier_obj = nil
+        if this_model_name ~= nil then
+            -- The object has non-fixed models, so we use any of the
+            -- randomly selected meshes
+            soldier_obj = spawn_model(this_model_name, relative_pos, random_rotation, minimal_collider, is_red_player, nil, meshes[i])
+        else
+            -- Now we have fixed models, so we use the corresponding one
+            -- Except that fixed models may use assets instead of meshes!
+            this_model_name = base['fixed_models'][i]
+            if _G[this_model_name]['customasset'] ~= nil then
+                soldier_obj = spawn_asset(this_model_name, relative_pos, random_rotation)
+            else
+            meshes[i] = random_element(_G[this_model_name]['mesh'])
+                soldier_obj = spawn_model(this_model_name, relative_pos, random_rotation, minimal_collider, is_red_player, nil, meshes[i])
+            end
+        end
+
+        base_obj.addAttachment(soldier_obj)
+    end
+
+    base_obj.setRotation({0, y_rotation, 0})
+    base_obj.auto_raise = false
+end
+
+-- Given an army object data, spawns it on the center of the table.
+-- Hope nothing is in there and that all data is correct because this doesn't
+-- validate
+function spawn_army(army_name, army, is_red_player, command_color)
+    math.randomseed(os.time())
+    local n_bases = tlen(army) - 1
+    local rows = 1
+    if n_bases > g_max_bases_row then
+        n_bases = g_max_bases_row
+        rows = math.ceil(n_bases / g_max_bases_row)
+    end
+
+    local width_army = n_bases * g_base_width_inches
+
+    local z_pos_0 = g_spawn_from_center_in
+    local y_rotation = 180
+    if is_red_player then
+        z_pos_0 = g_spawn_from_center_in * -1
+        y_rotation = 0
+    end
+
+    local z_pos = 5
+    if is_red_player then
+        z_pos = z_pos * -1
+    end
+    local i = 0
+    for base_id, base_data in pairs(army) do
+        if base_id ~= 'data' then
+            local z_pos_modifier = -1 * get_depth_base(base_data['base']) / 2
+            if is_red_player then
+                z_pos_modifier = -1 * z_pos_modifier
+            end
+
+            local column = i % g_max_bases_row
+            local row = math.floor(i / g_max_bases_row)
+
+            local row_z_pos = z_pos * (1 + row) + z_pos_0
+
+            local location = {
+                x = g_offset_deployment_x + column * g_base_width_inches - width_army / 2,
+                y = g_base_height_tabletop + g_table_thickness + g_base_height_inches / 2,
+                z = row_z_pos - z_pos_modifier
+            }
+            spawn_base(base_data, location, y_rotation, is_red_player, command_color)
+            i = i + 1
+        end
+    end
+
+    local note_row = math.floor(i / g_max_bases_row) + 1
+    local note_pos = {
+        x = g_offset_deployment_x,
+        y = g_base_height_tabletop + g_table_thickness + 1,
+        z = z_pos * (1 + note_row) + z_pos_0
+    }
+
+    local angle = 180
+    if is_red_player then
+        angle = 0
+    end
+
+    local maker = ''
+    if army['data']['manufacturer'] ~= nil then
+        maker = '\n\nMiniatures by: ' .. army['data']['manufacturer']
+    end
+
+    spawn_note(army_name,
+        'Agressiveness: ' .. army['data']['aggresiveness'] .. '\n'
+        .. 'Terrain: ' .. army['data']['terrain'] .. '\n'
+        .. army['data']['list']
+        .. maker,
+        note_pos,
+        angle)
+    print_important('Army deployed: ' .. army_name .. ', see chat for options')
+    print_info('List: ' .. army['data']['list'])
+    print_info('Agressiveness: ' .. army['data']['aggresiveness']
+        .. ' Terrain: ' .. army['data']['terrain'])
+
+end
+
+function get_author_tile(tilename)
+    local tile = _G[tilename]
+    return tile['author']
+end
+
+function get_author_model(modelname)
+    local model = _G[modelname]
+    return model['author']
+end
+
+function get_author_base(base)
+    if base['n_models'] == 0 then
+        return get_author_tile(base['base'])
+    end
+    local model = base['model_data']
+    if model == nil then
+        model = base['fixed_models'][1]
+    end
+    return get_author_model(model)
+end
+
+function update_authors_text(army)
+    local authorship_models = 'The authors of the models are:\n\n'
+    local authors_set = {}
+    for base_id, base in pairs(army) do
+        print_debug('Getting data of base for author of ' .. base_id)
+        if base_id ~= 'data' then
+            local author = get_author_base(base)
+
+            if authors_set[author] == nil then
+                authorship_models = authorship_models .. ' - ' .. author .. '\n\n'
+                authors_set[author] = 1
+            end
+        end
+    end
+    UI.setValue('text_authors', authorship_models)
+end
+
+function book_has_an_army_with_models(book_dataname)
+    local book_armies = armies[book_dataname]
+    for army_name,_ in pairs(book_armies) do
+        if not str_has_substr(army_name, '(Plain)') then
+            return true
+        end
+    end
+    return false
+end
+
+function get_first_book_with_models()
+    for book_name, book_armies in pairs(armies) do
+        if book_has_an_army_with_models(book_name) then
+            return book_name
+        end
+    end
+    return nil
+end
+
+function get_first_army_with_models(book_dataname)
+    local book_armies = armies[book_dataname]
+    for army_name,_ in pairs(book_armies) do
+        if not str_has_substr(army_name, '(Plain)') then
+            return army_name
+        end
+    end
+    return nil
+end
+
+function update_book_menu(book_selected)
+    local options = {}
+    for book_name, book_armies in pairs(armies) do
+        if not g_filter_armies_models then
+            table.insert(options, dataname_to_friendlyname(book_name))
+        end
+
+        if g_filter_armies_models
+            and book_has_an_army_with_models(book_name) then
+            table.insert(options, dataname_to_friendlyname(book_name))
+        end
+    end
+    set_options_dropdown_by_id('dropdown_book', options, book_selected)
+end
+
+function update_player_color_menu(is_player_red)
+    local selected = 2
+    if is_player_red then
+        selected = 1
+    end
+    set_options_dropdown_by_id('dropdown_playercolor', { 'Red', 'Blue' },  selected)
+end
+
+function update_armies_menu(book, army_selected)
+    local options = {}
+    for army_name,_ in pairs(book) do
+        if not g_filter_armies_models then
+            table.insert(options, dataname_to_friendlyname(army_name))
+        end
+
+        if g_filter_armies_models
+           and not str_has_substr(army_name, '(Plain)') then
+            table.insert(options, dataname_to_friendlyname(army_name))
+        end
+    end
+    set_options_dropdown_by_id('dropdown_army', options, army_selected)
+end
+
+g_current_table = nil
+function spawn_table_obj(model_url, height_correction, texture_array_urls)
+    local obj = spawnObject({
+        type = 'Custom_Model',
+        position = { x = 0, y = g_base_height_tabletop, z = 0},
+        rotation = { x = 0, y = 0, z = 0},
+        scale = { x = 1, y = 1, z = 1},
+        sound = false,
+        snap_to_grid = false,
+        callback_function = function(obj)
+            g_current_table = obj.getGUID()
+            print_info('Table is set to ' .. g_current_table)
+        end
+    })
+    local tex_index = math.random(1, #texture_array_urls)
+    obj.setCustomObject({
+        mesh = model_url,
+        diffuse = texture_array_urls[tex_index],
+        material = 1,
+        cast_shadows = false,
+        specular_sharpness = 0,
+        specular_intensity = 0,
+        freshnel_strength = 0
+    })
+    print_important('Table spawned, you can now put terrain on top, then use Right Click > Fix terrain.')
+
+    add_context_menu_table(obj)
+    obj.setLock(true)
+end
+
+function change_bases_to_terrain(terrain_type)
+    print_debug('Changing bases to ' .. terrain_type)
+    local all_objs = getAllObjects()
+    local bases = filter_bases(all_objs)
+    for _,base in ipairs(bases) do
+        local name = base.getName()
+        if g_bases[name] ~= nil 
+            and not str_has_substr(g_bases[name]['tile'], 'plain') then
+
+            print_debug('Changing ' .. name)
+            local is_red = g_bases[name]['is_red_player']
+            local tex = tables[terrain_type]['blue_player_base_tex']
+            if is_red then
+                tex = tables[terrain_type]['red_player_base_tex']
+            end
+            local custom = base.getCustomObject()
+            custom['diffuse'] = tex
+            base.setCustomObject(custom)
+            g_ignore_next_delete[name] = true
+            base.reload()
+        end
+    end
+    Wait.frames(function()
+        local all_objs = getAllObjects()
+        local bases = filter_bases(all_objs)
+        for _,base in ipairs(bases) do
+            local name = base.getName()
+            if g_bases[name] ~= nil then
+                add_context_menu_base(base)
+            end
+        end
+    end, 1)
+end
+
+function rotate_table()
+    local gametable = getObjectFromGUID(g_current_table)
+    local newrotation = gametable.getRotation()
+    newrotation['y'] = newrotation['y'] + 90
+    gametable.setRotation(newrotation)
+end
+
+function spawn_model(troop_name, pos, added_y_axis_rotation, collider, is_player_red, overridden_tex, overridden_mesh)
+    -- Better pray that the input name actually exists! lol
+    local model_data = _G[troop_name]
+
+    local texture = overridden_tex
+    if texture == nil then
+        texture = model_data['player_blue_tex']
+        if is_player_red then
+            texture = model_data['player_red_tex']
+        end
+        -- Vegetation etc does not have that kind of player texture
+        -- they are global
+        if texture == nil then
+            texture = model_data['texture']
+        end
+    end
+
+    local selected_mesh = overridden_mesh
+    if selected_mesh == nil then
+        local meshes = model_data['mesh']
+        local mesh_index = math.random(1, #model_data['mesh'])
+        selected_mesh = meshes[mesh_index]
+    end
+
+    local spawn_data = get_spawn_model(pos,
+        model_data['rotation'],
+        model_data['height_correction'],
+        model_data['scale'],
+        selected_mesh,
+        texture,
+        collider)
+    spawn_data['spawn']['rotation']['y'] = spawn_data['spawn']['rotation']['y'] + added_y_axis_rotation
+    local obj = spawnObject(spawn_data['spawn'])
+    obj.setCustomObject(spawn_data['custom_obj_attrs'])
+
+    return obj
+end
+
+function spawn_asset(asset_name, pos, added_y_axis_rotation)
+    print_debug('Spawning asset ' .. asset_name)
+    if _G[asset_name]['rotation'] then
+        added_y_axis_rotation = added_y_axis_rotation + _G[asset_name]['rotation']
+    end
+
+    local obj = spawnObject({
+        type = 'Custom_Assetbundle',
+        position = pos,
+        rotation = { x = 0, y = added_y_axis_rotation, z = 0},
+        scale = { x = 1, y = 1, z = 1 },
+        sound = false,
+        snap_to_grid = false
+    })
+    obj.setCustomObject({
+        assetbundle = _G[asset_name]['customasset']
+    })
+    return obj
+end
+
+function calculate_random_meshes(how_many, meshes_available)
+    local aux = {}
+    local meshes = {}
+    for i = 1, how_many do
+        if #aux == 0 then
+            for k,v in pairs(meshes_available) do
+                aux[k] = v
+            end
+        end
+        local index = math.random(1, #aux)
+        meshes[i] = aux[index]
+        table.remove(aux, index)
+    end
+    return meshes
+end
+
+function get_spawn_model(pos, rotation_correction, height_correction, model_scale, model_mesh, model_diffuse, collider_if_exists)
+    return {
+        spawn = {
+            type = 'Custom_Model',
+            position = { x = pos['x'], y = pos['y'] + height_correction, z = pos['z']},
+            rotation = { x = 0, y = rotation_correction, z = 0},
+            scale = { x = model_scale, y = model_scale, z = model_scale},
+            sound = false,
+            snap_to_grid = false
+        },
+        custom_obj_attrs = {
+            mesh = model_mesh,
+            diffuse = model_diffuse,
+            material = 3,
+            collider = collider_if_exists
+        }
+    }
+end
+
+g_ignore_next_delete = {}
+function onObjectDestroy(dying_object)
+    local name = dying_object.getName()
+    if g_ignore_next_delete[name] ~= nil then
+        g_ignore_next_delete[name] = nil
+        return
+    end
+    if is_table(dying_object) then
+        print_info('Table removed from play')
+        g_current_table = nil
+    elseif g_bases[name] ~= nil then
+        print_info('Base ' .. name .. ' removed from play')
+        g_bases[name] = nil
+    end
+end
+
+function delete_all_proxy()
+    local all_objs = getAllObjects()
+    for _,obj in ipairs(all_objs) do
+        local name = obj.getName()
+        if str_starts_with(name, 'base Proxy') then
+            -- This executes on next frame
+            obj.destroy()
+        end
+    end
+end
+
+function spawn_proxy_after_deletion()
+    spawn_base({
+        name = 'Proxy 40x15',
+        base = 'tile_plain_4Bd_40x15',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=-11}, 0, true)
+    spawn_base({
+        name = 'Proxy 40x20',
+        base = 'tile_plain_3Ax_40x20',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=-12}, 0, true)
+    spawn_base({
+        name = 'Proxy 40x30',
+        base = 'tile_plain_3Cv_40x30',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=-13.5}, 0, true)
+    spawn_base({
+        name = 'Proxy 40x40',
+        base = 'tile_plain_El_40x40',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=-15.5}, 0, true)
+
+
+    spawn_base({
+        name = 'Proxy 40x15',
+        base = 'tile_plain_4Bd_40x15',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=11}, 180, false)
+    spawn_base({
+        name = 'Proxy 40x20',
+        base = 'tile_plain_3Ax_40x20',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=12}, 180, false)
+    spawn_base({
+        name = 'Proxy 40x30',
+        base = 'tile_plain_3Cv_40x30',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=13.5}, 180, false)
+    spawn_base({
+        name = 'Proxy 40x40',
+        base = 'tile_plain_El_40x40',
+        ignore_terrain = 'true',
+        n_models = 0
+    }, {x=-42, y=2, z=15.5}, 180, false)
+end
+
+function spawn_proxy_bases()
+    delete_all_proxy()
+    Wait.frames(function()
+        spawn_proxy_after_deletion()
+    end, 1)
+end
+
+function spawn_note(title, desc, pos, y_angle)
+    local obj = spawnObject({
+        type = "Notecard",
+        position          = pos,
+        rotation          = {x=0, y=y_angle, z=0},
+        scale             = {x=1, y=1, z=1},
+        sound             = false,
+        snap_to_grid      = false,
+    })
+    obj.setName(title)
+    obj.setDescription(desc)
+end

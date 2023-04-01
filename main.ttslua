@@ -1,0 +1,159 @@
+-- In the global file of your game, simply add this line
+-- #include main
+-- Then, in Atom package settings, go to the TTS package and define the path
+-- to this folder. Since this main file already includes the others no further
+-- operation is required for scripts. The XML needs to be copied manually
+-- however.
+
+#include scripts/data/data_settings
+#include scripts/data/data_tables
+#include scripts/data/data_terrain
+#include scripts/data/data_troops
+#include scripts/data/data_troops_greek_successors
+#include scripts/data/data_armies_book_I
+#include scripts/data/data_armies_book_II
+#include scripts/data/data_armies_book_III
+#include scripts/data/data_armies_book_IV
+#include scripts/log
+#include scripts/utilities_lua
+#include scripts/utilities
+#include scripts/logic_terrain
+#include scripts/logic_gizmos
+#include scripts/logic_spawn_army
+#include scripts/logic_dead
+#include scripts/logic_dice
+#include scripts/logic_history_stack
+#include scripts/logic
+#include scripts/uievents
+
+function onload()
+    print_info('----------------------------------------------')
+    print_info('                       DBA 2.2 v1.23.0 ')
+    print_info('----------------------------------------------\n\nCheck the Notebook for instructions.')
+
+    Wait.time(main_loop, g_seconds_main_loop, -1)
+
+    g_log_enabled = false
+    make_scenery_non_interactable()
+    reset_state()
+    spawn_proxy_bases()
+    spawn_all_dice()
+    spawn_dead_zones()
+
+    Wait.time(function ()
+        g_log_enabled = true
+    end, 1, 0)
+end
+
+
+function make_scenery_non_interactable()
+    -- Main table
+    getObjectFromGUID('4adbe6').interactable = false
+
+    -- Chairs
+    getObjectFromGUID('1d5cd6').interactable = false
+    getObjectFromGUID('670e7b').interactable = false
+
+    -- Floor
+    getObjectFromGUID('7e8655').interactable = false
+
+    -- Walls
+    getObjectFromGUID('dda7c2').interactable = false
+    getObjectFromGUID('2e8f62').interactable = false
+    getObjectFromGUID('8f0e8b').interactable = false
+    getObjectFromGUID('ba4bf6').interactable = false
+
+    -- Main point light
+    getObjectFromGUID('06f591').interactable = false
+
+    -- Key light
+    getObjectFromGUID('607c46').interactable = false
+
+    -- Back lights
+    getObjectFromGUID('8b3843').interactable = false
+    getObjectFromGUID('78eb52').interactable = false
+
+    -- Top light for shadows
+    getObjectFromGUID('037fab').interactable = false
+
+end
+
+function update()
+    check_picked_base()
+end
+
+function print_help()
+    print_info('Write commands in the chat by writting !command.')
+    print_info('A extended description can be found on the Notebook.')
+    print_info('Available commands:')
+    print_info('!dba_help: Print this help')
+    print_info('!dba_print_state: Prints the current global vars of bases and table')
+    print_info('!dba_reset: Recalculates the bases and tables using heuristics on the existing objects')
+end
+
+function onChat(message, player)
+    if message == '!dba_help' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_help()
+        return false
+    end
+
+    if message == '!dba_reset' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_important('Resetting the state of the board, check the chat')
+        reset_state()
+        return false
+    end
+
+    if message == '!dba_print_state' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_state()
+        return false
+    end
+
+    if message == '!dba_debug' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        if g_debug_mode then
+            print_info('Disabling debug mode')
+            g_debug_mode = false
+        else
+            print_info('Enabling debug mode, will take effect in three seconds. Note, this will cause decreased performance.')
+            Wait.time(function()
+                g_debug_mode = true
+                print_info('Debug mode ON')
+            end, 3)
+        end
+        return false
+    end
+
+    if message == '!dba_3dterrain' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        g_use_3d_terrain = true
+        print_info('3D Terrain enabled, when doing a fix&lock on the table 3D objects will load.')
+        return false
+    end
+
+    if message == '!dba_regen_dice' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        spawn_all_dice()
+        return false
+    end
+
+    if message == '!dba_random_army' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        local _,book = random_kv(armies)
+        local army_name, army = random_kv(book)
+
+        print_important('Army selected: ' .. army_name .. '')
+        print_info('List: ' .. army['data']['list'])
+        print_info('Agressiveness: ' .. army['data']['aggresiveness']
+            .. ' Terrain: ' .. army['data']['terrain'])
+        return false
+    end
+
+    if str_starts_with(message, '!dba') then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_error('Command not recognized. Please, use !dba_help')
+    end
+    return true
+end
