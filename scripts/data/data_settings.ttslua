@@ -7,8 +7,8 @@ g_base_height_inches = 0.11811023622047244094
 -- The default table is not at y=0 position, but rather a bit higher
 g_base_height_tabletop = 1.06
 
--- The DBA tables are 3mm thick/tall
-g_table_thickness = 0.11811023622047244094
+-- The tables are 0.1in thick
+g_table_thickness = 0.1
 
 g_bases_position = g_base_height_inches + g_table_thickness + g_base_height_tabletop
 

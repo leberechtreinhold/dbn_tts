@@ -55,10 +55,10 @@
     <Image image="select_table_bg_v2"></Image>
 </Panel>
 <Panel id="panel_dba_table_selection" width="600" height="500" rectAlignment="MiddleCenter" active="false" raycastTarget="true">
-    <TableLayout padding="80 70 120 80" cellSpacing="20">
+    <TableLayout padding="120 70 120 120" cellSpacing="20">
         <Row preferredHeight="40">
             <Cell columnSpan="6" dontUseTableCellBackground="true">
-                <Text fontSize="20" alignment="MiddleLeft">Select the background for the table:</Text>
+                <Text fontSize="20" alignment="MiddleLeft">Select the table options:</Text>
             </Cell>
         </Row>
         <Row>
@@ -67,52 +67,20 @@
                     <TableLayout>
                         <Row>
                             <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Arable, Grass</Toggle>
+                                <Toggle fontSize="16">60x60</Toggle>
                             </Cell>
 
                             <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Forest</Toggle>
+                                <Toggle fontSize="16">90x60</Toggle>
                             </Cell>
                             <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Tropical, Jungle</Toggle>
-                            </Cell>
-                        </Row>
-                        <Row>
-                            <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Hilly, Mountains</Toggle>
-                            </Cell>
-                            <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Dry, Desert</Toggle>
-                            </Cell>
-                            <Cell dontUseTableCellBackground="true">
-                                <Toggle fontSize="16">Steppe</Toggle>
+                                <Toggle fontSize="16">120x60</Toggle>
                             </Cell>
                         </Row>
                     </TableLayout>
                 </ToggleGroup>
             </Cell>
         </Row>
-        <Row>
-            <Cell columnSpan="3" dontUseTableCellBackground="true">
-                <Toggle id="toggle_double_dba" isOn="false" onValueChanged="on_toggle_table_double" fontSize="16">Big DBA</Toggle>
-            </Cell>
-            <Cell columnSpan="3" dontUseTableCellBackground="true">
-                <Toggle id="toggle_3dterrain" isOn="true" onValueChanged="on_toggle_3dterrain" fontSize="16">Use 3D terrain</Toggle>
-            </Cell>
-        </Row>
-        <!--<Row>
-            <Cell columnSpan="2" dontUseTableCellBackground="true">
-                <Text fontSize="20">Table size:</Text>
-            </Cell>
-            <Cell columnSpan="4" dontUseTableCellBackground="true">
-                <ToggleGroup id="togglegroup_table_type" onValueChanged="on_toggle_table_type">
-                    <HorizontalLayout>
-                        <Toggle fontSize="16">Small, 60x60</Toggle>
-                        <Toggle fontSize="16">Large, 80x80</Toggle>
-                    </HorizontalLayout>
-                </ToggleGroup>
-            </Cell>
-        </Row>-->
         <Row preferredHeight="40">
             <Cell columnSpan="2" dontUseTableCellBackground="true">
                 <Button columnSpan="2" fontSize="20" onClick="on_cancel_load_table">Cancel</Button>

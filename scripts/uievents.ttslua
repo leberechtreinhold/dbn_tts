@@ -323,34 +323,12 @@ function on_toggle_deployment_lines(player, value, id)
 end
 
 function on_create_table_menu(player, value, id)
-    g_use_3d_terrain = true
-    g_is_double_dba = false
-    UI.setAttribute('toggle_double_dba', 'isOn', g_is_double_dba)
-    UI.setAttribute('toggle_3dterrain', 'isOn', g_use_3d_terrain)
     UI.setAttribute('panel_dba_table_selection_bg', 'active', true)
     UI.setAttribute('panel_dba_table_selection_bg', 'visibility', player.color)
     UI.setAttribute('panel_dba_table_selection', 'active', true)
     UI.setAttribute('panel_dba_table_selection', 'visibility', player.color)
     UI.setAttribute('button_spawn_table', 'interactable', false)
     UI.setAttribute('button_create_army', 'interactable', false)
-end
-
-g_is_double_dba = false
-function on_toggle_table_double(player, value, id)
-    if value == "True" then
-        g_is_double_dba = true
-    else
-        g_is_double_dba = false
-    end
-end
-
-g_use_3d_terrain = true
-function on_toggle_3dterrain(player, value, id)
-    if value == "True" then
-        g_use_3d_terrain = true
-    else
-        g_use_3d_terrain = false
-    end
 end
 
 g_current_table_type = 0
@@ -361,17 +339,11 @@ end
 function from_toggle_number_to_table_type(value)
     -- Must follow the order of the toggles on main.xml
     if value == 0 then
-        return 'grass'
+        return '60x60'
     elseif value == 1 then
-        return 'forest'
+        return '90x60'
     elseif value == 2 then
-        return 'tropical'
-    elseif value == 3 then
-        return 'mountain'
-    elseif value == 4 then
-        return 'desert'
-    elseif value == 5 then
-        return 'steppe'
+        return '120x60'
     else
         return 'Error'
     end
@@ -379,19 +351,16 @@ end
 
 function on_load_table(player, value, id)
     local type = from_toggle_number_to_table_type(g_current_table_type)
-
-    if tables[type] == nil then
-        type = 'grass'
-    end
-    local tex = tables[type]['table_tex']
+    print_debug('Table type chosen is ' .. type)
 
     if g_current_table == nil then
-        if g_is_double_dba then
-            spawn_table_obj(tables['model_double'], tables['height_correction'], tex)
+        if type == '120x60' then
+            spawn_table_obj(tables, {x=2,y=1,z=1})
+        elseif type == '90x60' then
+            spawn_table_obj(tables, {x=1.5,y=1,z=1})
         else
-            spawn_table_obj(tables['model'], tables['height_correction'], tex)
+            spawn_table_obj(tables, {x=1,y=1,z=1})
         end
-        change_bases_to_terrain(type)
     else
         print_error('There\'s already a table spawned')
     end

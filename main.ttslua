@@ -24,7 +24,7 @@
 
 function onload()
     print_info('----------------------------------------------')
-    print_info('                       DBN 2.1 v0.0.1 ')
+    print_info('                       DBN 2.1 v0.0.2 ')
     print_info('----------------------------------------------\n\nCheck the Notebook for instructions.')
 
     Wait.time(main_loop, g_seconds_main_loop, -1)
@@ -43,34 +43,11 @@ end
 
 function make_scenery_non_interactable()
     -- Main table
-    getObjectFromGUID('4adbe6').interactable = false
+    getObjectFromGUID('4adbe6').interactable = true
 
     -- Chairs
-    getObjectFromGUID('1d5cd6').interactable = false
-    getObjectFromGUID('670e7b').interactable = false
-
-    -- Floor
-    getObjectFromGUID('7e8655').interactable = false
-
-    -- Walls
-    getObjectFromGUID('dda7c2').interactable = false
-    getObjectFromGUID('2e8f62').interactable = false
-    getObjectFromGUID('8f0e8b').interactable = false
-    getObjectFromGUID('ba4bf6').interactable = false
-
-    -- Main point light
-    getObjectFromGUID('06f591').interactable = false
-
-    -- Key light
-    getObjectFromGUID('607c46').interactable = false
-
-    -- Back lights
-    getObjectFromGUID('8b3843').interactable = false
-    getObjectFromGUID('78eb52').interactable = false
-
-    -- Top light for shadows
-    getObjectFromGUID('037fab').interactable = false
-
+    getObjectFromGUID('1d5cd6').interactable = true
+    getObjectFromGUID('670e7b').interactable = true
 end
 
 function update()
@@ -97,6 +74,32 @@ function onChat(message, player)
         print_info(player.get_steam_name() .. ': ' .. message)
         print_important('Resetting the state of the board, check the chat')
         reset_state()
+        return false
+    end
+
+    if message == '!dba_kill_lights' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_important('Killing the lights')
+
+        local lights = {
+            main = '06f591',
+            key = '607c46',
+            back1 = '8b3843',
+            back2 = '78eb52',
+            fill = '037fab'
+        }
+
+        for name, id in pairs(lights) do
+            local obj = getObjectFromGUID(id)
+            if not obj then
+                print_info('Couldnt get ' .. name)
+            end
+
+            if not destroyObject(obj) then
+                print_info('Couldnt kill light' .. name)
+            end
+        end
+
         return false
     end
 
