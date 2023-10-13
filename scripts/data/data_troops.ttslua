@@ -143,8 +143,8 @@ tile_plain_Ms_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970595/13A2E4A9058BDD93EB1023D95F77AA602C8A3CE5/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_MsE_40x20 = {
@@ -156,8 +156,8 @@ tile_plain_MsE_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970692/DA2FDFFD1CB4A6F8F26D3DCF8D1D5E3DDB32C169/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_MsM_40x20 = {
@@ -169,8 +169,8 @@ tile_plain_MsM_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970791/8A31D3924A5E486BE445136219E1672C1BBC92E4/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_MsOG_40x20 = {
@@ -182,8 +182,8 @@ tile_plain_MsOG_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970882/B2BDB49306D2EA9C39D6533FC3CFE7311DEB1A64/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LEM_40x20 = {
@@ -195,8 +195,8 @@ tile_plain_LEM_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970521/FF4EE36C1B9D3A364A27F2E7D40FB34992221561/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_Jg_40x20 = {
@@ -208,8 +208,8 @@ tile_plain_Jg_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970314/AB37843CD5D59B686AD14217E5BE7E95782DFAC7/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_JgE_40x20 = {
@@ -221,8 +221,8 @@ tile_plain_JgE_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970384/809FA54851D749B4A7AC8AC43E8B6CEE08C3A12A/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_JgM_40x20 = {
@@ -234,8 +234,8 @@ tile_plain_JgM_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970448/68B85771FBB08A4C6074300419D746156FEAA001/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_Gs_40x20 = {
@@ -247,8 +247,8 @@ tile_plain_Gs_40x20 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970235/4BDDE5184D6F7EE013ABE5F524B0162DCBC86A10/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LI_40x30 = {
@@ -260,8 +260,8 @@ tile_plain_LI_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971752/1B0029F58C666E4B7D3A2A6CF6B405C8622423BA/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LIE_40x30 = {
@@ -273,8 +273,8 @@ tile_plain_LIE_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971833/70FBDB1EAC909372CF4BE256C3814222C30BC5F5/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LIM_40x30 = {
@@ -286,8 +286,8 @@ tile_plain_LIM_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971936/D45B6CCA3CEE0F78DE4D50BE51FA47DDD7081D4F/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HC_40x30 = {
@@ -299,8 +299,8 @@ tile_plain_HC_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271970978/A6B6ADF4B634939477BE513EEC816E5EB69C8F74/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HCE_40x30 = {
@@ -312,8 +312,8 @@ tile_plain_HCE_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971066/545EC06556971189F9FADD121F656A59DA7C5B4E/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HCM_40x30 = {
@@ -325,8 +325,8 @@ tile_plain_HCM_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971145/1648E6146C2BCEB2ED421C7709D891F51995AED7/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HCOG_40x30 = {
@@ -338,8 +338,8 @@ tile_plain_HCOG_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971217/F25DE5DC2B480369FC686A1EA839FBC02DE78ADC/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_IC_40x30 = {
@@ -351,8 +351,8 @@ tile_plain_IC_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971286/2C668CEE1965EC7AC9F855EF84B45D59D1FA63A0/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_ICE_40x30 = {
@@ -364,8 +364,8 @@ tile_plain_ICE_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971411/1F3AD727ABBBAE1F5CEB64751D2D748B02B4BE8C/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LC_40x30 = {
@@ -377,8 +377,8 @@ tile_plain_LC_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971477/84252923CDC039E23153CD5B060F20FEDBB706A1/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LCE_40x30 = {
@@ -390,8 +390,8 @@ tile_plain_LCE_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971545/9F893A50F289001509722E1C2E9980FC1313119A/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LCM_40x30 = {
@@ -403,8 +403,8 @@ tile_plain_LCM_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971618/4821A851059A3F9EC35DA94B3C6EE692CD6E37D9/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_LCOG_40x30 = {
@@ -416,8 +416,8 @@ tile_plain_LCOG_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271971680/E64A11F02F441C2BDB407A8FB4D5EA81691DCD40/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_SC_40x30 = {
@@ -429,8 +429,8 @@ tile_plain_SC_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972024/5577E15A2BB67646FFE58607BF2E3B77A1D695C4/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_SCE_40x30 = {
@@ -442,8 +442,8 @@ tile_plain_SCE_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972104/6EF953E9FD71A60975869C36FC8B36A9EB1BF66F/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_SCM_40x30 = {
@@ -455,8 +455,8 @@ tile_plain_SCM_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972179/7F2F19E6AC8C3A1E3A60E5AD08AE233FBFB849D7/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_SCmd_40x30 = {
@@ -468,8 +468,8 @@ tile_plain_SCmd_40x30 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972247/9527393C1197FC6C2F0A616D0579710E0014742E/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_CinC_40x40 = {
@@ -481,8 +481,8 @@ tile_plain_CinC_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972334/86DFC22F854D27E27C836FE04191C0E6446619F0/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_CR_40x40 = {
@@ -494,8 +494,8 @@ tile_plain_CR_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972436/D6EFD469EB35D87570166F1618EE344C8EF0AFED/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_FA_40x40 = {
@@ -507,8 +507,8 @@ tile_plain_FA_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972521/8C309ED503E23D8B0C96F55C1DEB32FAB0AAF8F9/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_FAE_40x40 = {
@@ -520,8 +520,8 @@ tile_plain_FAE_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972608/1C42F82A0C94DDBC153CA5F40ECDB580E9E0A669/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_FAM_40x40 = {
@@ -533,8 +533,8 @@ tile_plain_FAM_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972684/6B30EE170D40BAC1C049391D1B7EA69468D6A653/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HA_40x40 = {
@@ -546,8 +546,8 @@ tile_plain_HA_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972761/142635408E8151D0A3C140B80BCC1D10CF10944A/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HAE_40x40 = {
@@ -559,8 +559,8 @@ tile_plain_HAE_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972826/0C9505C83DB175CD8CE4CA9B502106D8F1BD90EF/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_HAM_40x40 = {
@@ -572,8 +572,8 @@ tile_plain_HAM_40x40 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972892/358BB0BAAB3B3ABB686FE8399F16627C16DF34A6/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }
 
 tile_plain_BT_40x80 = {
@@ -585,6 +585,6 @@ tile_plain_BT_40x80 = {
     author = 'Plain tile, original work by Leberecht Reinhold',
     mesh = { 'http://cloud-3.steamusercontent.com/ugc/2070007637271972957/3011078B211E0A4981A46C8ECAF3797A4B8F670A/'
     },
-    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973998/98AD5BE62DA376608BEDFCCBB117D108E280CA95/',
-    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2070007637271973914/3069174C4D378A1EB6127E1FB3265E54FB550929/'
+    player_red_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988724/C8393B6659C27458EF5EA087EA875F18291D727F/',
+    player_blue_tex = 'http://cloud-3.steamusercontent.com/ugc/2120688809004988397/AB560FB8BBFA66CB9967A2C55D85529EE51A8BD2/'
 }

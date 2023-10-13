@@ -82,19 +82,20 @@ end
 function spawn_base(base, pos, y_rotation, is_red_player, command_color)
     print_debug('Spawning base #' .. g_base_index)
     local overriden_tex = nil
-    if base['ignore_terrain'] == nil then
-        local type = from_toggle_number_to_table_type(g_current_table_type)
-
-        if tables[type] == nil then
-            type = 'grass'
-        end
-
-        if is_red_player then
-            overriden_tex = tables[type]['red_player_base_tex']
-        else
-            overriden_tex = tables[type]['blue_player_base_tex']
-        end
-    end
+    -- TODO with new format
+    -- if base['ignore_terrain'] == nil then
+    --     local type = from_toggle_number_to_table_type(g_current_table_type)
+    --
+    --     if tables[type] == nil then
+    --         type = 'grass'
+    --     end
+    --
+    --     if is_red_player then
+    --         overriden_tex = tables[type]['red_player_base_tex']
+    --     else
+    --         overriden_tex = tables[type]['blue_player_base_tex']
+    --     end
+    -- end
 
     if base['name'] == nil then
         print_error('One of the bases of this army has no name! Please report to us so we can fix it asap')
@@ -385,12 +386,14 @@ function update_armies_menu(book, army_selected)
 end
 
 g_current_table = nil
-function spawn_table_obj(model_url, height_correction, texture_array_urls)
+function spawn_table_obj(table_asset, size)
+    print_debug('Spawning table ' .. table_asset['customasset'] .. ' ' .. vec_to_str(size))
+
     local obj = spawnObject({
-        type = 'Custom_Model',
+        type = 'Custom_Assetbundle',
         position = { x = 0, y = g_base_height_tabletop, z = 0},
         rotation = { x = 0, y = 0, z = 0},
-        scale = { x = 1, y = 1, z = 1},
+        scale = size,
         sound = false,
         snap_to_grid = false,
         callback_function = function(obj)
@@ -398,15 +401,8 @@ function spawn_table_obj(model_url, height_correction, texture_array_urls)
             print_info('Table is set to ' .. g_current_table)
         end
     })
-    local tex_index = math.random(1, #texture_array_urls)
     obj.setCustomObject({
-        mesh = model_url,
-        diffuse = texture_array_urls[tex_index],
-        material = 1,
-        cast_shadows = false,
-        specular_sharpness = 0,
-        specular_intensity = 0,
-        freshnel_strength = 0
+        assetbundle = table_asset['customasset']
     })
     print_important('Table spawned, you can now put terrain on top, then use Right Click > Fix terrain.')
 
