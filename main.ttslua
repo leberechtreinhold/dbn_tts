@@ -58,26 +58,26 @@ function print_help()
     print_info('Write commands in the chat by writting !command.')
     print_info('A extended description can be found on the Notebook.')
     print_info('Available commands:')
-    print_info('!dba_help: Print this help')
-    print_info('!dba_print_state: Prints the current global vars of bases and table')
-    print_info('!dba_reset: Recalculates the bases and tables using heuristics on the existing objects')
+    print_info('!dbn_help: Print this help')
+    print_info('!dbn_print_state: Prints the current global vars of bases and table')
+    print_info('!dbn_reset: Recalculates the bases and tables using heuristics on the existing objects')
 end
 
 function onChat(message, player)
-    if message == '!dba_help' then
+    if message == '!dbn_help' then
         print_info(player.get_steam_name() .. ': ' .. message)
         print_help()
         return false
     end
 
-    if message == '!dba_reset' then
+    if message == '!dbn_reset' then
         print_info(player.get_steam_name() .. ': ' .. message)
         print_important('Resetting the state of the board, check the chat')
         reset_state()
         return false
     end
 
-    if message == '!dba_kill_lights' then
+    if message == '!dbn_kill_lights' then
         print_info(player.get_steam_name() .. ': ' .. message)
         print_important('Killing the lights')
 
@@ -103,13 +103,13 @@ function onChat(message, player)
         return false
     end
 
-    if message == '!dba_print_state' then
+    if message == '!dbn_print_state' then
         print_info(player.get_steam_name() .. ': ' .. message)
         print_state()
         return false
     end
 
-    if message == '!dba_debug' then
+    if message == '!dbn_debug' then
         print_info(player.get_steam_name() .. ': ' .. message)
         if g_debug_mode then
             print_info('Disabling debug mode')
@@ -124,20 +124,20 @@ function onChat(message, player)
         return false
     end
 
-    if message == '!dba_3dterrain' then
+    if message == '!dbn_3dterrain' then
         print_info(player.get_steam_name() .. ': ' .. message)
         g_use_3d_terrain = true
         print_info('3D Terrain enabled, when doing a fix&lock on the table 3D objects will load.')
         return false
     end
 
-    if message == '!dba_regen_dice' then
+    if message == '!dbn_regen_dice' then
         print_info(player.get_steam_name() .. ': ' .. message)
         spawn_all_dice()
         return false
     end
 
-    if message == '!dba_random_army' then
+    if message == '!dbn_random_army' then
         print_info(player.get_steam_name() .. ': ' .. message)
         local _,book = random_kv(armies)
         local army_name, army = random_kv(book)
@@ -149,7 +149,7 @@ function onChat(message, player)
 
     if str_starts_with(message, '!dba') then
         print_info(player.get_steam_name() .. ': ' .. message)
-        print_error('Command not recognized. Please, use !dba_help')
+        print_error('Command not recognized. Please, use !dbn_help')
     end
     return true
 end

@@ -91,7 +91,7 @@ function roll_dice(color)
     local obj = getObjectFromGUID(g_current_dice[color])
 
     if obj == nil then
-        print_error('No dice found, please use !dba_regen_dice')
+        print_error('No dice found, please use !dbn_regen_dice')
         return
     end
 
