@@ -1,381 +1,269 @@
 g_terrain = {
-    desert = {
-        forest = {
-            objects = {
-                'terrain_palm_tree'
+    forest_circle = {
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Forest',
+        author = 'Aitor Jiménez, based on map from Battle of Aspern-Essling by Sir Archibald Alison, from David Rumsey Map collection.',
+        customasset = 'http://cloud-3.steamusercontent.com/ugc/2147712943086135501/BF357E9C569E82184DA11E979982AB4C8DEDF1BE/',
+        -- Due to custom colliders, the size given by getBoundsNormalize isn't reliable
+        -- Original size = 4.72 x 4.72in => 120x120mm ~=> 3x3 BW
+        original_size = {x=4.72, y=0.04, z=4.72},
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
             },
-            multiplier = 1.3,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1022823759371071004/DC4F81C7F92B971C1D1F83F2B12C0DE1E896ABEE/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_palm_shrubs',
-                'terrain_rock_sand'
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1022823759371071004/DC4F81C7F92B971C1D1F83F2B12C0DE1E896ABEE/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
-            }
-        }
-    },
-    grass = {
-        forest = {
-            objects = {
-                'terrain_nogal'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
             },
-            multiplier = 1.5,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_rock_grey'
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
             }
         }
     },
-    forest = {
-        forest = {
-            objects = {
-                'terrain_fir'
+    forest_irregular = {
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Forest',
+        author = 'Aitor Jiménez, based on map from Battle of Aspern-Essling by Sir Archibald Alison, from David Rumsey Map collection.',
+        customasset = 'http://cloud-3.steamusercontent.com/ugc/2147712943086135659/E11EC63676396A0F3546C2468DA24CFD295DF56D/',
+        -- Original size = 6.11 x 3.08in => 155x78mm ~=> 4x2BW
+        original_size = {x=6.11, y=0.04, z=3.08},
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
             },
-            multiplier = 2,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_rock_grey'
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
-            }
-        }
-    },
-    mountain = {
-        forest = {
-            objects = {
-                'terrain_fir'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
             },
-            multiplier = 1.5,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_rock_grey'
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
             }
         }
     },
-    steppe = {
-        forest = {
-            objects = {
-                'terrain_nogal',
-                'terrain_shrub_nogal'
+    rough_circle = {
+        -- Original size: 2.5 x 2.5
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Rough',
+        author = 'Aitor Jiménez, based on map from Battle of Aspern-Essling by Sir Archibald Alison, from David Rumsey Map collection.',
+        customasset = 'http://cloud-3.steamusercontent.com/ugc/2147712943086135803/925E960BCF48DFB25F68DD68E97B3AC4094424CE/',
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
             },
-            multiplier = 1.5,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_rock_grey'
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
-            }
-        }
-    },
-    tropical = {
-        forest = {
-            objects = {
-                'terrain_tree',
-                'terrain_palm_shrubs'
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
             },
-            multiplier = 2,
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        rough = {
-            objects = {
-                'terrain_palm_shrubs'
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
             },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1267149286201969420/6FF3C9E1F3FF49AE28673503D1C73FD7E881F2C0/'
-            }
-        },
-        oasis = {
-            objects = {
-                'terrain_palm_tree'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095519/542A46C870B041B7DC4B885E338E2D93D0699A2C/'
-            }
-        },
-        marsh = {
-            objects = {
-                'terrain_palm_shrubs'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1056604919810095379/0D3285C74959280FC90BBF4B968884A74740ED32/'
-            }
-        },
-        urban = {
-            objects = {
-                'terrain_building_antiquity'
-            },
-            texture = {
-                'http://cloud-3.steamusercontent.com/ugc/1294171976562520174/A75E4757707F221084966139B783D65DA2556B50/'
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
             }
         }
     },
-}
-
-terrain_rock_sand = {
-    height_correction = 0,
-    scale = 0.1,
-    rotation = 0,
-    description = 'Terrain Rock',
-    author = 'Terrain Rock by ice kazim, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875058/5D1FA1E14993F2BA31A3BFA4F77C135C913470BD/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875192/1775B2BCC2AC612B55859BC824730B78C0CEA139/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875374/AC7BED890802C7AEF589719C2DB5E3A33F1B61D5/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875483/1DF468E1C5F61A2A088EC87F38FE79E30E1DA005/'
+    rough_irregular = {
+        -- Original size: 2.9 x 1.5
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Rough',
+        author = 'Aitor Jiménez, based on map from Battle of Aspern-Essling by Sir Archibald Alison, from David Rumsey Map collection.',
+        customasset = 'http://cloud-3.steamusercontent.com/ugc/2147712943086135946/E787684B164A3A4FAA0424656EF63BCA08F10123/',
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
+            },
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
+            },
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
+            },
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
+            },
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
+            },
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
+            }
+        }
     },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1267149286201875742/50D71609D178D8D71088DD678B8A779FF9CD7621/'
-}
-
-terrain_rock_grey = {
-    height_correction = 0,
-    scale = 0.1,
-    rotation = 0,
-    description = 'Terrain Rock',
-    author = 'Terrain Rock by ice kazim, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875058/5D1FA1E14993F2BA31A3BFA4F77C135C913470BD/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875192/1775B2BCC2AC612B55859BC824730B78C0CEA139/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875374/AC7BED890802C7AEF589719C2DB5E3A33F1B61D5/',
-        'http://cloud-3.steamusercontent.com/ugc/1267149286201875483/1DF468E1C5F61A2A088EC87F38FE79E30E1DA005/'
+    hill_1 = {
+        -- Original size: 3.32 x 4.23
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Hill',
+        author = 'Aitor Jiménez, based on map from Battle of Vitoria by Sir Archibald Alison, from David Rumsey Map collection.',
+        mesh = {
+            'http://cloud-3.steamusercontent.com/ugc/2147712943086133153/8EAD4325DECF94844552B1D1320CCFAA5B0F6EFD/'
+        },
+        texture = 'http://cloud-3.steamusercontent.com/ugc/2147712943086132062/B237777F90A7B4CD4478AA7D99E6964D88071CA0/',
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
+            },
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
+            },
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
+            },
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
+            },
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
+            },
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
+            }
+        }
     },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1267149286201875580/BC3284977387717F2AF106D9365914FE3BC1BFF1/'
-}
-
-terrain_palm_tree = {
-    height_correction = 0,
-    scale = 0.05,
-    rotation = 0,
-    description = 'Palm Tree',
-    author = 'Palm Tree by killst4r, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1056603883716667096/1EDFD14996FB4ECB1ABCB511BA1C1AA62187AD08/',
-        'http://cloud-3.steamusercontent.com/ugc/1056603883716686644/0E6589543EE1FAB6BE9C8DF837A492341B6FB7B4/',
-        'http://cloud-3.steamusercontent.com/ugc/1056603883716686746/B709A17C7AA24B1A8949397600E0E955E786455F/'
+    hill_2 = {
+        -- Original size: 3.84 x 2.39
+        height_correction = 0,
+        scale = 1,
+        rotation = 0,
+        description = 'Hill',
+        author = 'Aitor Jiménez, based on map from Battle of Vitoria by Sir Archibald Alison, from David Rumsey Map collection.',
+        mesh = {
+            'http://cloud-3.steamusercontent.com/ugc/2147712943086133323/D19F852BF74560BF4FB5C96B2C0C9407E7B21A80/'
+        },
+        texture = 'http://cloud-3.steamusercontent.com/ugc/2147712943086132062/B237777F90A7B4CD4478AA7D99E6964D88071CA0/',
+        variants = {
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=0.8}
+            },
+            {
+                name = 'Small',
+                size = {x=1, y=1, z=1}
+            },
+            {
+                name = 'Small',
+                size = {x=0.8, y=1, z=1.6}
+            },
+            {
+                name = 'Small',
+                size = {x=1.2, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.2}
+            },
+            {
+                name = 'Large',
+                size = {x=1.6, y=1, z=1.6}
+            },
+            {
+                name = 'Large',
+                size = {x=2.4, y=1, z=2.4}
+            },
+            {
+                name = 'Large',
+                size = {x=3.2, y=1, z=1.6}
+            }
+        }
     },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1056603883717140905/53E5838C3E98E32E8ADF3FFE3C4FFCC248A264CD/'
-}
-
-terrain_palm_shrubs = {
-    height_correction = 0,
-    scale = 0.05,
-    rotation = 0,
-    description = 'Palm Tree',
-    author = 'Palm Tree by killst4r, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1056603883716686387/318F4122D944ADF7F8D798FC516FC550E4792A7C/',
-        'http://cloud-3.steamusercontent.com/ugc/1056603883716686552/0456900004D531060587DA2317241680C8ED4A0D/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1056603883717140905/53E5838C3E98E32E8ADF3FFE3C4FFCC248A264CD/'
-}
-
-terrain_tree = {
-    height_correction = 0,
-    scale = 0.1,
-    rotation = 0,
-    description = 'Tree',
-    author = 'Tree by killst4r, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1056603883717140380/003BF539C1FB0A44BAC71D51091AEDD64C63E113/',
-        'http://cloud-3.steamusercontent.com/ugc/1056603883717140558/FB9CA2E369AD49B9E20484D84530EAA7D3B35BF0/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1056603883717140905/53E5838C3E98E32E8ADF3FFE3C4FFCC248A264CD/'
-}
-
-terrain_fir = {
-    height_correction = 0,
-    scale = 0.03,
-    rotation = 0,
-    description = 'Fir Tree',
-    author = 'Fir Tree by syol, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1056603883717140704/6D5A3A5B786D6B46A32BDDB53071CAB2498243CA/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1056603883717140905/53E5838C3E98E32E8ADF3FFE3C4FFCC248A264CD/'
-}
-
-terrain_nogal = {
-    height_correction = 0,
-    scale = 0.3,
-    rotation = 0,
-    description = 'Nogal Tree',
-    author = 'Nogal Tree by rezashams313, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1666853884552194667/0170BE1489904A8B52576566E92A6A3E8B0D29BE/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1666853884552195011/EB014AC2051ABD9E900CBF41FBB7B56750486560/'
-}
-
-terrain_shrub_nogal = {
-    height_correction = 0,
-    scale = 0.3,
-    rotation = 0,
-    description = 'Nogal Shrub',
-    author = 'Nogal Tree by rezashams313, edited by LeberechtReinhold.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1666853884552194857/2EAC3F8728CE5FFCE454C57F9E6ED64305E211B6/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1666853884552195011/EB014AC2051ABD9E900CBF41FBB7B56750486560/'
-}
-
-terrain_building_antiquity = {
-    height_correction = 0,
-    scale = 0.03,
-    rotation = 0,
-    description = 'Building',
-    author = 'Carthage building by 0AD.',
-    mesh = {
-        'http://cloud-3.steamusercontent.com/ugc/1056603883713299773/D647127C7D1A41378DD4E8288738F595FCD7C126/'
-    },
-    texture = 'http://cloud-3.steamusercontent.com/ugc/1056603883713300439/305F7371766D99ECBBCEE8ACA6A6CB3C06891A76/'
 }

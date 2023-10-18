@@ -147,6 +147,30 @@ function onChat(message, player)
         return false
     end
 
+    if message == '!dbn_terrain' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        local counter = 0
+        for k,v in pairs(g_terrain) do
+            print_info('Spawning ' .. k)
+            local variant_counter = 0
+            for _,variant in ipairs(v['variants']) do
+                spawn_terrain_obj(v, { x = 16 + counter, y = 0, z = -10 + variant_counter}, variant['size'], function(obj)
+                    -- Unity calculates the bounds on a separate thread and may take a while, even if the
+                    -- obj has loaded already
+                    Wait.time(function()
+                        local bounds = obj.getBoundsNormalized()
+                        local short_name = v['description'] .. ' ' .. variant['name']
+                        print_debug('Spawned ' .. short_name .. ' Size: ' .. vec_to_str(bounds.size))
+                        obj.setName('terrain ' .. short_name .. ' ' .. vec_to_xz_mm(bounds.size))
+                    end, 1)
+                end)
+                variant_counter = variant_counter + 10
+            end
+            counter = counter + 10
+        end
+        return false
+    end
+
     if str_starts_with(message, '!dba') then
         print_info(player.get_steam_name() .. ': ' .. message)
         print_error('Command not recognized. Please, use !dbn_help')

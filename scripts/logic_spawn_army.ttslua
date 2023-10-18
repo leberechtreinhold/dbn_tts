@@ -385,25 +385,45 @@ function update_armies_menu(book, army_selected)
     set_options_dropdown_by_id('dropdown_army', options, army_selected)
 end
 
-g_current_table = nil
-function spawn_table_obj(table_asset, size)
-    print_debug('Spawning table ' .. table_asset['customasset'] .. ' ' .. vec_to_str(size))
+function spawn_terrain_obj(asset, pos, size, on_spawn)
+    print_debug('Spawning obj ' .. vec_to_str(pos) .. ' - ' .. vec_to_str(size))
+
+    local asset_type = 'Custom_Assetbundle'
+    local custom_obj_attrs = {
+        assetbundle = asset['customasset']
+    }
+    if asset['customasset'] == nil then
+        print_debug('Object is custom model, not assetbundle')
+        asset_type = 'Custom_Model'
+        custom_obj_attrs = {
+            mesh = random_element(asset['mesh']),
+            diffuse = asset['texture'],
+            material = 3
+        }
+    end
 
     local obj = spawnObject({
-        type = 'Custom_Assetbundle',
-        position = { x = 0, y = g_base_height_tabletop, z = 0},
+        type = asset_type,
+        position = { x = pos.x, y = pos.y + g_base_height_tabletop, z = pos.z},
         rotation = { x = 0, y = 0, z = 0},
         scale = size,
         sound = false,
         snap_to_grid = false,
-        callback_function = function(obj)
-            g_current_table = obj.getGUID()
-            print_info('Table is set to ' .. g_current_table)
-        end
+        callback_function = on_spawn
     })
-    obj.setCustomObject({
-        assetbundle = table_asset['customasset']
-    })
+    
+    obj.setCustomObject(custom_obj_attrs)
+    return obj 
+end
+
+g_current_table = nil
+function spawn_table_obj(table_asset, size)
+    print_debug('Spawning table ' .. table_asset['customasset'] .. ' ' .. vec_to_str(size))
+
+    local obj = spawn_terrain_obj(table_asset, { x = 0, y = 0, z = 0}, size, function(obj)
+        g_current_table = obj.getGUID()
+        print_info('Table is set to ' .. g_current_table)
+    end)
     print_important('Table spawned, you can now put terrain on top, then use Right Click > Fix terrain.')
 
     add_context_menu_table(obj)

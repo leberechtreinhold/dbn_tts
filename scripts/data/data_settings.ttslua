@@ -7,12 +7,10 @@ g_base_height_inches = 0.11811023622047244094
 -- The default table is not at y=0 position, but rather a bit higher
 g_base_height_tabletop = 1.06
 
--- The tables are 0.1in thick
-g_table_thickness = 0.1
+-- The tables are 0.05in thick
+g_table_thickness = 0.05
 
-g_bases_position = g_base_height_inches + g_table_thickness + g_base_height_tabletop
-
-g_terrain_pos = 1.2
+g_terrain_pos = g_base_height_tabletop + g_table_thickness
 
 -- Musket range in inches
 g_ms_range = 2

@@ -945,10 +945,12 @@ function onObjectRotate(obj, spin, flip, player_color, old_spin, old_flip)
     local initial_transform = calculate_transform(obj)
 
     Wait.time(function ()
-        local new_transform = calculate_transform(obj)
-        local move = {}
-        add_transform_to_move(move, obj.getName(), initial_transform, new_transform)
-        push_to_history_stack(move)
+        if g_picked_base_obj == nil then
+            local new_transform = calculate_transform(obj)
+            local move = {}
+            add_transform_to_move(move, obj.getName(), initial_transform, new_transform)
+            push_to_history_stack(move)
+        end
         draw_all_gizmos()
     end, 0.2)
 

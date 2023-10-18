@@ -36,6 +36,14 @@ function vec_to_str(vec)
     return '[' .. string.format('%.2f',vec['x']) .. ', ' .. string.format('%.2f',vec['y']) .. ', ' .. string.format('%.2f',vec['z']) .. ']'
 end
 
+function vec_to_xz_mm(vec) 
+    if vec == nil then
+        return '[nil]'
+    end
+    local v = vec_in_to_mm(vec)
+    return string.format('%.0f', v['x']) .. 'x' .. string.format('%.0f', v['z']) .. 'mm'
+
+end
 
 -- Given two points represented by tables with x,z coords, determines the angle
 -- in radains, of point B relative to A, taking into account the orientation
