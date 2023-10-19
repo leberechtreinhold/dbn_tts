@@ -74,6 +74,14 @@ function get_strokes_zoc(base_obj, transform)
     }
 end
 
+function get_stroke_color(base_obj)
+    local color = g_gizmo_fire_color_player_red
+    if is_base_blue_player(base_obj.getName()) then
+        color = g_gizmo_fire_color_player_blue
+    end
+    return color
+end
+
 -- A bow fires 2" forward from each corner of the bases, but only up to a base
 -- width, not the full 2"
 --
@@ -173,10 +181,7 @@ function get_strokes_fire_arc(base_obj, transform, shooting_range, max_width)
         paux['z'] = paux_rotated['z']
     end
 
-    local color = g_gizmo_fire_color_player_red
-    if is_base_blue_player(base_obj.getName()) then
-        color = g_gizmo_fire_color_player_blue
-    end
+    local color = get_stroke_color(base_obj)
 
     return
     {
@@ -192,11 +197,16 @@ function get_strokes_ms(base_obj, transform)
 end
 
 function get_strokes_li(base_obj, transform)
+    print('get_strokes_li')
     return get_strokes_fire_arc(base_obj, transform, g_li_range, g_base_width_inches)
 end
 
 function get_strokes_jg(base_obj, transform)
     return get_strokes_fire_arc(base_obj, transform, g_jg_range, g_base_width_inches)
+end
+
+function get_strokes_inside_forest(base_obj, transform)
+    return get_strokes_around(base_obj, transform, g_range_inside_forest, g_gizmo_color_forest)
 end
 
 function get_strokes_art(base_obj, transform)
@@ -352,8 +362,10 @@ function get_strokes_base_pos(obj, transform)
         table.insert(strokes, get_strokes_ms(obj, transform))
     elseif str_has_substr(name, 'LI') then
         table.insert(strokes, get_strokes_li(obj, transform))
+        table.insert(strokes, get_strokes_inside_forest(obj, transform))
     elseif str_has_substr(name, 'Jg') then
         table.insert(strokes, get_strokes_jg(obj, transform))
+        table.insert(strokes, get_strokes_inside_forest(obj, transform))
     elseif str_has_substr(name, 'FA') then
         table.insert(strokes, get_strokes_art(obj, transform))
         table.insert(strokes, get_strokes_canister(obj, transform))
