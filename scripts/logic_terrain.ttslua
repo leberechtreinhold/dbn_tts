@@ -221,10 +221,10 @@ function fix_terrain_and_lock()
 
             local current_scale = terrain.getScale()
             print_debug('The terrain had scale ' .. vec_to_str(current_scale))
-            if str_has_substr(terrain.getName(), 'Road') then
-                current_scale.y = 0.8 + math.random()*0.1 - 0.05
-            else
+            if str_has_substr(terrain.getName(), 'Hill') then
                 current_scale.y = 0.1
+            else
+                current_scale.y = 0.2
             end
             terrain.setScale(current_scale)
 
@@ -240,8 +240,9 @@ function fix_terrain_and_lock()
             terrain.setPosition(current_pos)
 
             Wait.frames(function ()
-                gametable.addAttachment(terrain)
-                print_info('Attaching ' .. terrain.getName())
+                  terrain.setLock(true)
+                  terrain.interactable = false
+                  print_info('Attaching ' .. terrain.getName())
             end, 1)
         end
     end

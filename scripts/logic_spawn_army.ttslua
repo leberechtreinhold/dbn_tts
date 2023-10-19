@@ -390,16 +390,20 @@ function spawn_terrain_obj(asset, pos, size, on_spawn)
 
     local asset_type = 'Custom_Assetbundle'
     local custom_obj_attrs = {
-        assetbundle = asset['customasset']
+        assetbundle = asset.customasset
     }
-    if asset['customasset'] == nil then
+    if asset.customasset == nil then
         print_debug('Object is custom model, not assetbundle')
         asset_type = 'Custom_Model'
         custom_obj_attrs = {
-            mesh = random_element(asset['mesh']),
-            diffuse = asset['texture'],
+            mesh = random_element(asset.mesh),
+            diffuse = asset.texture,
             material = 3
         }
+    end
+
+    if asset.scale ~= nil then
+        size = vec_dot_product(size, asset.scale)
     end
 
     local obj = spawnObject({
@@ -411,9 +415,9 @@ function spawn_terrain_obj(asset, pos, size, on_spawn)
         snap_to_grid = false,
         callback_function = on_spawn
     })
-    
+
     obj.setCustomObject(custom_obj_attrs)
-    return obj 
+    return obj
 end
 
 g_current_table = nil

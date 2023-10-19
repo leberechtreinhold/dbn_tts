@@ -1,3 +1,5 @@
 tables = {
-    customasset = "http://cloud-3.steamusercontent.com/ugc/2106051976567116811/66D44833924254F3503DAC448FC3ED3CBB15B8C5/"
+    customasset = "http://cloud-3.steamusercontent.com/ugc/2106051976567116811/66D44833924254F3503DAC448FC3ED3CBB15B8C5/",
+    -- The default table is 2ft instead of 60cm
+    scale = {x=0.984251, y=1, z=0.984251}
 }
