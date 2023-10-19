@@ -43,11 +43,11 @@ end
 
 function make_scenery_non_interactable()
     -- Main table
-    getObjectFromGUID('4adbe6').interactable = true
+    getObjectFromGUID('4adbe6').interactable = false
 
     -- Chairs
-    getObjectFromGUID('1d5cd6').interactable = true
-    getObjectFromGUID('670e7b').interactable = true
+    getObjectFromGUID('1d5cd6').interactable = false
+    getObjectFromGUID('670e7b').interactable = false
 end
 
 function update()
