@@ -592,6 +592,20 @@ function get_strokes_deployment(pos, color, angle, w, h)
     }
 end
 
+
+function spawn_text(text, pos)
+    local params = {
+        type = '3DText',
+        position = pos,
+        rotation = { 90, 0, 0 }
+    }
+    local obj = spawnObject(params)
+    obj.setValue(text)
+    obj.TextTool.setFontSize(180)
+    obj.setName('Text ' .. text)
+    return obj
+end
+
 function get_strokes_deployment_between(pos, color, angle, w, h)
     local half_width = w / 2
     local half_depth = h / 2
@@ -622,6 +636,89 @@ function get_strokes_deployment_between(pos, color, angle, w, h)
     }
 end
 
+function draw_numbers_quadrant(size_x, size_z)
+    print('Real W: ' .. size_x .. ' Real H: ' .. size_z)
+
+    local height_text = g_table_thickness * 2 + g_base_height_tabletop + g_base_height_inches / 2
+
+    local sep = from_mm_to_in(300)
+    local quadrant_columns = round(size_x / sep)
+    local quadrant_rows = round(size_z / sep) 
+
+    print('Columns = ' .. quadrant_columns .. ' Rows: ' .. quadrant_rows)
+
+    local how_many_quadrants = quadrant_columns * quadrant_rows
+
+    local i = 0
+    local vert_sep = size_z / (quadrant_rows + 1)
+    local j = 0
+    local horz_sep = size_x / (quadrant_columns + 1)
+
+    local number = 1
+
+    while i < quadrant_rows do
+        while j < quadrant_columns do
+             spawn_text(string.format('%d', number), { 
+                 x = -size_x/2 + (j+1)*horz_sep, 
+                 y = height_text, 
+                 z = -size_z/2 + (i+1)*vert_sep
+            })
+            print('Drawing: ' .. number .. ' i=' .. i .. ' j=' .. j)
+
+            number = number + 1
+
+            j = j + 1
+        end
+        i = i + 1
+        j = 0
+    end
+end
+
+function get_strokes_quadrants(strokes, color, size_x, size_z, w, h)
+    local half_width = w / 2
+    local half_depth = h / 2
+    local line_height = g_table_thickness + g_base_height_inches / 2
+
+    -- Vertical lines, every 30cm
+    local sep = from_mm_to_in(300)
+
+    -- To calculate how many we need to use the actual size, but for the lines themselves we use
+    -- scaled size since lines scale with the obj
+    local how_many_vertical_lines = round(size_x / sep) - 1
+    local how_many_horizontal_lines = round(size_z / sep) - 1
+    print('Unscaled W: ' .. w .. ' Unscaled H: ' .. h)
+    print('Real W: ' .. size_x .. ' Real H: ' .. size_z)
+    print('Vertical lines = ' .. how_many_vertical_lines .. ' Horizontal lines: ' .. how_many_horizontal_lines)
+
+    local i = 0
+    local vert_sep = w / (how_many_vertical_lines + 1)
+    while i < how_many_vertical_lines do
+        table.insert(strokes, {
+            points    = {{x = -half_width + (i+1)*vert_sep, y = line_height, z =  half_depth},
+                         {x = -half_width + (i+1)*vert_sep, y = line_height, z = -half_depth}},
+            color     = color,
+            thickness = g_line_thickness,
+            rotation  = {0,0,0}
+        })
+        print('Vertical line at: ' .. -half_width + (i+1)*vert_sep)
+        i = i + 1
+    end
+
+    local j = 0
+    local horz_sep = h / (how_many_horizontal_lines + 1)
+    while j < how_many_horizontal_lines do
+        table.insert(strokes, {
+            points    = {{x = -half_width, y = line_height, z = -half_depth + (j+1)*horz_sep},
+                         {x =  half_width, y = line_height, z = -half_depth + (j+1)*horz_sep}},
+            color     = color,
+            thickness = g_line_thickness,
+            rotation  = {0,0,0}
+        })
+        j = j + 1
+        print('Horizontal line at: ' .. -half_depth + (j+1)*horz_sep)
+    end
+end
+
 function draw_deployment_lines()
     local strokes = {}
     local gametable = getObjectFromGUID(g_current_table)
@@ -644,13 +741,25 @@ function draw_deployment_lines()
     table.insert(strokes,
         get_strokes_deployment_between('bot', g_gizmo_color_player_red, angle, w, h))
 
-        gametable.setVectorLines(strokes)
+    get_strokes_quadrants(strokes, g_gizmo_color_forest, size['x'], size['z'], w, h)
+    draw_numbers_quadrant(size['x'], size['z'])
+
+    gametable.setVectorLines(strokes)
 end
 
 function remove_deployment_lines()
     local gametable = getObjectFromGUID(g_current_table)
     if gametable ~= nil then
         gametable.setVectorLines({})
+    end
+
+    local all_objs = getAllObjects()
+    for _,obj in ipairs(all_objs) do
+        local name = obj.getName()
+        if str_starts_with(name, 'Text ') then
+            -- This executes on next frame
+            obj.destroy()
+        end
     end
 end
 

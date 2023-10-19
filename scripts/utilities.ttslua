@@ -357,3 +357,7 @@ function random_point_ellipse(w, h, added_from_center)
         z = random_radius * math.sin(random_theta)
     }
 end
+
+function round(f)
+    return math.floor(f + 0.5)
+end
