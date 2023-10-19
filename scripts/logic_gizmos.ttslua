@@ -207,6 +207,11 @@ function get_strokes_hart(base_obj, transform)
     return get_strokes_fire_arc(base_obj, transform, g_horse_art_range, g_base_width_inches)
 end
 
+function get_strokes_canister(base_obj, transform)
+    return get_strokes_fire_arc(base_obj, transform, g_canister_range, g_base_width_inches)
+end
+
+
 function get_strokes_wwg(base_obj, transform)
     local color = g_gizmo_fire_color_player_red
     if is_base_blue_player(base_obj.getName()) then
@@ -351,9 +356,11 @@ function get_strokes_base_pos(obj, transform)
         table.insert(strokes, get_strokes_jg(obj, transform))
     elseif str_has_substr(name, 'FA') then
         table.insert(strokes, get_strokes_art(obj, transform))
+        table.insert(strokes, get_strokes_canister(obj, transform))
     elseif str_has_substr(name, 'HA')
            or str_has_substr(name, 'CR') then
         table.insert(strokes, get_strokes_hart(obj, transform))
+        table.insert(strokes, get_strokes_canister(obj, transform))
     end
 
     if str_has_substr(name, 'CinC')

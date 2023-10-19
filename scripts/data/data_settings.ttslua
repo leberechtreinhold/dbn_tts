@@ -19,9 +19,8 @@ g_jg_range = 4
 
 -- Artillery range inches
 g_art_range = 10
-
--- Horse artillery range inches
 g_horse_art_range = 6
+g_canister_range = 3
 
 -- Initial distance spawns from the center
 g_spawn_from_center_in = 16
