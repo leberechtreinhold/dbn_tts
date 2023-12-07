@@ -37,7 +37,7 @@ The project is structured in the following way:
 - scripts/uievents: The script that controls the uievents
 - scripts/utilities: A bunch of utilities since lua doesn't offer much, like vector operations, some algebra, rounding, string utilities, unit conversion etc etc.
 - scripts/data_*: All the data to spawn troops, bases, and armies, and general settings.
-- scripts/logic_*: All the game logic.
+- scripts/logic_*: All the game logic.d
 - dice/dice_base: All the code for the different dices
 - dice/pip_blue-red: The code assigned to two dice objets, both should be D6 and they calculate the PIPs.
 - ui/main.xml: The XML for the UI, which, AFAIK, cannot be #included into TTS through ATOM and needs to be copy/pasted. Can be used directly using include src tag.
@@ -57,13 +57,6 @@ It's not required, but it's encouraged to put this repo with the name "dba22_tts
 
     #include dba22_tts/scripts/dice/pip_blue
     #include dba22_tts/scripts/dice/pip_red
-
-TODO
-----
-
-The project is managed by a trello board:
-
-https://trello.com/b/4XQ8tFlB/dba-tts
 
 License
 -------
