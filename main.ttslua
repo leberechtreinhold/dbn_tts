@@ -10,7 +10,6 @@
 #include scripts/data/data_terrain
 #include scripts/data/data_troops
 #include scripts/data/data_armies_plain
-#include scripts/log
 #include scripts/utilities_lua
 #include scripts/utilities
 #include scripts/logic_terrain
@@ -20,23 +19,26 @@
 #include scripts/logic_dice
 #include scripts/logic
 #include scripts/uievents
+
+-- Global requires
 History = require('../dbx_tts/History')
+Logger = require('../dbx_tts/Logger')
 
 function onload()
-    print_info('----------------------------------------------')
-    print_info('                       DBN 2.1 v0.0.3 ')
-    print_info('----------------------------------------------\n\nCheck the Notebook for instructions.')
+    Logger.info('----------------------------------------------')
+    Logger.info('                       DBN 2.1 v0.0.3 ')
+    Logger.info('----------------------------------------------\n\nCheck the Notebook for instructions.')
 
     Wait.time(main_loop, g_seconds_main_loop, -1)
 
-    g_log_enabled = false
+    Logger.enabled = false
     make_scenery_non_interactable()
     reset_state()
     spawn_all_dice()
     spawn_dead_zones()
 
     Wait.time(function ()
-        g_log_enabled = true
+        Logger.enabled = true
     end, 1, 0)
 end
 
@@ -55,31 +57,31 @@ function update()
 end
 
 function print_help()
-    print_info('Write commands in the chat by writting !command.')
-    print_info('A extended description can be found on the Notebook.')
-    print_info('Available commands:')
-    print_info('!dbn_help: Print this help')
-    print_info('!dbn_print_state: Prints the current global vars of bases and table')
-    print_info('!dbn_reset: Recalculates the bases and tables using heuristics on the existing objects')
+    Logger.info('Write commands in the chat by writting !command.')
+    Logger.info('A extended description can be found on the Notebook.')
+    Logger.info('Available commands:')
+    Logger.info('!dbn_help: Print this help')
+    Logger.info('!dbn_print_state: Prints the current global vars of bases and table')
+    Logger.info('!dbn_reset: Recalculates the bases and tables using heuristics on the existing objects')
 end
 
 function onChat(message, player)
     if message == '!dbn_help' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         print_help()
         return false
     end
 
     if message == '!dbn_reset' then
-        print_info(player.get_steam_name() .. ': ' .. message)
-        print_important('Resetting the state of the board, check the chat')
+        Logger.info(player.get_steam_name() .. ': ' .. message)
+        Logger.important('Resetting the state of the board, check the chat')
         reset_state()
         return false
     end
 
     if message == '!dbn_kill_lights' then
-        print_info(player.get_steam_name() .. ': ' .. message)
-        print_important('Killing the lights')
+        Logger.info(player.get_steam_name() .. ': ' .. message)
+        Logger.important('Killing the lights')
 
         local lights = {
             main = '06f591',
@@ -92,11 +94,11 @@ function onChat(message, player)
         for name, id in pairs(lights) do
             local obj = getObjectFromGUID(id)
             if not obj then
-                print_info('Couldnt get ' .. name)
+                Logger.info('Couldnt get ' .. name)
             end
 
             if not destroyObject(obj) then
-                print_info('Couldnt kill light' .. name)
+                Logger.info('Couldnt kill light' .. name)
             end
         end
 
@@ -104,54 +106,54 @@ function onChat(message, player)
     end
 
     if message == '!dbn_print_state' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         print_state()
         return false
     end
 
     if message == '!dbn_debug' then
-        print_info(player.get_steam_name() .. ': ' .. message)
-        if g_debug_mode then
-            print_info('Disabling debug mode')
-            g_debug_mode = false
+        Logger.info(player.get_steam_name() .. ': ' .. message)
+        if Logger.debug_enabled then
+            Logger.info('Disabling debug mode')
+            Logger.debug_enabled = false
         else
-            print_info('Enabling debug mode, will take effect in three seconds. Note, this will cause decreased performance.')
+            Logger.info('Enabling debug mode, will take effect in three seconds. Note, this will cause decreased performance.')
             Wait.time(function()
-                g_debug_mode = true
-                print_info('Debug mode ON')
+                Logger.debug_enabled = true
+                Logger.info('Debug mode ON')
             end, 3)
         end
         return false
     end
 
     if message == '!dbn_3dterrain' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         g_use_3d_terrain = true
-        print_info('3D Terrain enabled, when doing a fix&lock on the table 3D objects will load.')
+        Logger.info('3D Terrain enabled, when doing a fix&lock on the table 3D objects will load.')
         return false
     end
 
     if message == '!dbn_regen_dice' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         spawn_all_dice()
         return false
     end
 
     if message == '!dbn_random_army' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         local _,book = random_kv(armies)
         local army_name, army = random_kv(book)
 
-        print_important('Army selected: ' .. army_name .. '')
-        print_info('List: ' .. army['data']['list'])
+        Logger.important('Army selected: ' .. army_name .. '')
+        Logger.info('List: ' .. army['data']['list'])
         return false
     end
 
     if message == '!dbn_terrain' then
-        print_info(player.get_steam_name() .. ': ' .. message)
+        Logger.info(player.get_steam_name() .. ': ' .. message)
         local counter = 0
         for k,v in pairs(g_terrain) do
-            print_info('Spawning ' .. k)
+            Logger.info('Spawning ' .. k)
             local variant_counter = 0
             for _,variant in ipairs(v['variants']) do
                 spawn_terrain_obj(v, { x = 16 + counter, y = 0, z = -10 + variant_counter}, variant['size'], function(obj)
@@ -160,7 +162,7 @@ function onChat(message, player)
                     Wait.time(function()
                         local bounds = obj.getBoundsNormalized()
                         local short_name = v['description'] .. ' ' .. variant['name']
-                        print_debug('Spawned ' .. short_name .. ' Size: ' .. vec_to_str(bounds.size))
+                        Logger.debug('Spawned ' .. short_name .. ' Size: ' .. vec_to_str(bounds.size))
                         obj.setName('terrain ' .. short_name .. ' ' .. vec_to_xz_mm(bounds.size))
                     end, 1)
                 end)
@@ -172,8 +174,8 @@ function onChat(message, player)
     end
 
     if str_starts_with(message, '!dba') then
-        print_info(player.get_steam_name() .. ': ' .. message)
-        print_error('Command not recognized. Please, use !dbn_help')
+        Logger.info(player.get_steam_name() .. ': ' .. message)
+        Logger.error('Command not recognized. Please, use !dbn_help')
     end
     return true
 end
