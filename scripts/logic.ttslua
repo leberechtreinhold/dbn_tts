@@ -94,6 +94,38 @@ function get_bases_with_guid(list)
     return filtered
 end
 
+function get_hitstate_base(base_obj)
+    local name = base_obj.getName()
+    if str_has_substr(name, 'Shaken') then
+        return 'Shaken'
+    elseif str_has_substr(name, 'Damaged') then
+        return 'Damaged'
+    else
+        return 'Ready'
+    end
+end
+
+function set_hitstate_base(base_obj, new_state, color)
+    local name = base_obj.getName()
+    if str_has_substr(name, '%[') then
+        name = name:gsub('%[%a+%]', '[' .. new_state .. ']')
+    else
+        name = name .. ' [' .. new_state .. ']'
+    end
+    base_obj.setName(name)
+    base_obj.setColorTint(color)
+end
+
+function suffer_hit(base_obj)
+    local current_state = get_hitstate_base(base_obj)
+    local new_state = 'Ready'
+    if current_state == 'Ready' then
+        set_hitstate_base(base_obj, 'Damaged', {r=0.9, g=0.8, b=0.1})
+    elseif current_state == 'Damaged' then
+        set_hitstate_base(base_obj, 'Shaken',  {r=1, g=0.1, b=0.2})
+    end
+end
+
 -- 180º rotation a base
 function turn_around_base(obj)
     local initial_transform = calculate_transform(obj)

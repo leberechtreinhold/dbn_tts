@@ -24,7 +24,7 @@
 
 function onload()
     print_info('----------------------------------------------')
-    print_info('                       DBN 2.1 v0.0.2 ')
+    print_info('                       DBN 2.1 v0.0.3 ')
     print_info('----------------------------------------------\n\nCheck the Notebook for instructions.')
 
     Wait.time(main_loop, g_seconds_main_loop, -1)
