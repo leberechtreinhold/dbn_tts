@@ -436,7 +436,7 @@ function get_strokes_future_movements(new_selected_items)
     local strokes = {}
     local magnitude = g_paces_movement / 100
     for _, obj in ipairs(new_selected_items) do
-        if g_bases[obj.getName()] ~= nil then
+        if g_bases[get_original_name(obj.getName())] ~= nil then
             local transform = calculate_future_position(obj, magnitude)
 
             array_concat(strokes, get_strokes_base_pos(obj, transform))

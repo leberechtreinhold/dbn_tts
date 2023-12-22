@@ -89,6 +89,10 @@ function round_to_power(number, power)
     return math.floor(number/(10^power) + 0.5) * 10^power
 end
 
+-- remove white space from beginning and end of string
+function str_trim(str)
+    return str:gsub("^%s*(.-)%s*$", "%1")
+  end
 
 -- Checks if the given str starts with substr
 function str_starts_with(str, substr)
