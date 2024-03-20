@@ -73,7 +73,7 @@ function filter_bases(list)
     local filtered = {}
     for _,obj in ipairs(list) do
         local name = obj.getName()
-        if g_bases[get_original_name(name)] ~= nil or str_starts_with(obj.getName(), 'base') then
+        if g_bases[Utils.get_original_name(name)] ~= nil or str_starts_with(obj.getName(), 'base') then
             table.insert(filtered, obj)
         end
     end
@@ -87,7 +87,7 @@ function get_bases_with_guid(list)
     local filtered = {}
     for _,obj in ipairs(list) do
         local name = obj.getName()
-        if g_bases[get_original_name(name)] ~= nil or str_starts_with(obj.getName(), 'base') then
+        if g_bases[Utils.get_original_name(name)] ~= nil or str_starts_with(obj.getName(), 'base') then
             filtered[obj.getGUID()] = obj
         end
     end
@@ -919,22 +919,16 @@ function get_depth_base(tile_name)
     return from_mm_to_in(base_data['depth'])
 end
 
--- Removes the damaged portion of the name so it can be used on the g_bases
-function get_original_name(base_name)
-    base_name = base_name:gsub('%[%a+%]', '')
-    return str_trim(base_name)
-end
-
 function get_size(base_name)
     return {
         x = Settings.base_width_inches,
         y = Settings.base_height_inches,
-        z = get_depth_base(g_bases[get_original_name(base_name)]['tile'])
+        z = get_depth_base(g_bases[Utils.get_original_name(base_name)]['tile'])
     }
 end
 
 function is_base_red_player(base_name)
-    return g_bases[get_original_name(base_name)]['is_red_player']
+    return g_bases[Utils.get_original_name(base_name)]['is_red_player']
 end
 
 function is_base_blue_player(base_name)
