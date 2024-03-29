@@ -32,6 +32,7 @@ Settings.format_precision = '%.1f'
 
 Utils = DBX.Utils
 BasePicker = DBX.BasePicker:Create()
+DiceManager = DBX.DiceManager:Create()
 
 
 function onload()
@@ -44,7 +45,7 @@ function onload()
     Logger.enabled = false
     make_scenery_non_interactable()
     reset_state()
-    spawn_all_dice()
+    DiceManager:spawn_all_dice()
     spawn_dead_zones()
 
     Wait.time(function ()
@@ -145,7 +146,7 @@ function onChat(message, player)
 
     if message == '!dbn_regen_dice' then
         Logger.info(player.get_steam_name() .. ': ' .. message)
-        spawn_all_dice()
+        DiceManager:spawn_all_dice()
         return false
     end
 
