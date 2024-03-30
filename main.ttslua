@@ -17,6 +17,7 @@ Settings.unit_str = 'paces'
 Settings.format_precision = '%.1f'
 Settings.table_thickness = 0.05
 Settings.default_use_3d_terrain = false
+Settings.table_can_rotate = false
 
 Utils = DBX.Utils
 BasePicker = DBX.BasePicker:Create()
