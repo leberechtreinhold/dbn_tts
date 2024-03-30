@@ -246,7 +246,7 @@ function spawn_army(army_name, army, is_red_player, command_color)
 
             local location = {
                 x = g_offset_deployment_x + column * Settings.base_width_inches - width_army / 2,
-                y = g_base_height_tabletop + g_table_thickness + Settings.base_height_inches / 2,
+                y = Settings.base_height_tabletop + Settings.table_thickness + Settings.base_height_inches / 2,
                 z = row_z_pos - z_pos_modifier
             }
             spawn_base(base_data, location, y_rotation, is_red_player, command_color)
@@ -257,7 +257,7 @@ function spawn_army(army_name, army, is_red_player, command_color)
     local note_row = math.floor(i / g_max_bases_row) + 1
     local note_pos = {
         x = g_offset_deployment_x,
-        y = g_base_height_tabletop + g_table_thickness + 1,
+        y = Settings.base_height_tabletop + Settings.table_thickness + 1,
         z = z_pos * (1 + note_row) + z_pos_0
     }
 
@@ -411,7 +411,7 @@ function spawn_terrain_obj(asset, pos, size, on_spawn)
 
     local obj = spawnObject({
         type = asset_type,
-        position = { x = pos.x, y = pos.y + g_base_height_tabletop, z = pos.z},
+        position = { x = pos.x, y = pos.y + Settings.base_height_tabletop, z = pos.z},
         rotation = { x = 0, y = 0, z = 0},
         scale = size,
         sound = false,

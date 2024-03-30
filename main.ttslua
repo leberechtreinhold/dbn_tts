@@ -5,6 +5,23 @@
 -- operation is required for scripts. The XML needs to be copied manually
 -- however.
 
+-- DBX Library
+DBX = require('../dbx_tts/main')
+Logger = DBX.Logger:Create()
+History = DBX.History
+
+Settings = DBX.Settings
+Settings.module_name = 'dbn'
+Settings.units = 1*100
+Settings.unit_str = 'paces'
+Settings.format_precision = '%.1f'
+Settings.table_thickness = 0.05
+
+Utils = DBX.Utils
+BasePicker = DBX.BasePicker:Create()
+DiceManager = DBX.DiceManager:Create()
+TerrainManager = DBX.TerrainManager:Create()
+
 #include scripts/data/data_settings
 #include scripts/data/data_tables
 #include scripts/data/data_terrain
@@ -17,22 +34,6 @@
 #include scripts/logic_dead
 #include scripts/logic
 #include scripts/uievents
-
--- DBX Library
-DBX = require('../dbx_tts/main')
-Logger = DBX.Logger:Create()
-History = DBX.History
-
-Settings = DBX.Settings
-Settings.module_name = 'dbn'
-Settings.units = 1*100
-Settings.unit_str = 'paces'
-Settings.format_precision = '%.1f'
-
-Utils = DBX.Utils
-BasePicker = DBX.BasePicker:Create()
-DiceManager = DBX.DiceManager:Create()
-TerrainManager = DBX.TerrainManager:Create()
 
 
 

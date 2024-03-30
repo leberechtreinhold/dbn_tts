@@ -1,6 +1,6 @@
 
 function set_vec_to_above_terrain(vec)
-    vec['y'] = g_terrain_pos + Settings.base_height_inches
+    vec['y'] = TerrainManager:GetTerrainPos() + Settings.base_height_inches
     return vec
 end
 
@@ -570,17 +570,17 @@ function get_strokes_deployment(pos, color, angle, w, h)
     local center = { x=0, y=0, z=0 }
     local pos1 = rotate_point_relative({
         x = xpos * half_width,
-        y = g_table_thickness + Settings.base_height_inches / 2,
+        y = Settings.table_thickness + Settings.base_height_inches / 2,
         z = zpos * half_depth - zpos * g_deploy_home_in
     }, center, -angle)
     local pos2 = rotate_point_relative({
         x = xpos * half_width - xpos * g_deploy_side_in,
-        y = g_table_thickness + Settings.base_height_inches / 2,
+        y = Settings.table_thickness + Settings.base_height_inches / 2,
         z = zpos * half_depth - zpos * g_deploy_home_in
     }, center, -angle)
     local pos3 = rotate_point_relative({
         x = xpos * half_width - xpos * g_deploy_side_in,
-        y = g_table_thickness + Settings.base_height_inches / 2,
+        y = Settings.table_thickness + Settings.base_height_inches / 2,
         z = zpos * half_depth
     }, center, -angle)
 
@@ -620,12 +620,12 @@ function get_strokes_deployment_between(pos, color, angle, w, h)
     local center = { x=0, y=0, z=0 }
     local pos1 = rotate_point_relative({
         x = -half_width,
-        y = g_table_thickness + Settings.base_height_inches / 2,
+        y = Settings.table_thickness + Settings.base_height_inches / 2,
         z = zpos * half_depth - zpos * g_deploy_home_in
     }, center, -angle)
     local pos2 = rotate_point_relative({
         x = half_width,
-        y = g_table_thickness + Settings.base_height_inches / 2,
+        y = Settings.table_thickness + Settings.base_height_inches / 2,
         z = zpos * half_depth - zpos * g_deploy_home_in
     }, center, -angle)
     return {
@@ -639,7 +639,7 @@ end
 function draw_numbers_quadrant(size_x, size_z)
     print('Real W: ' .. size_x .. ' Real H: ' .. size_z)
 
-    local height_text = g_table_thickness * 2 + g_base_height_tabletop + Settings.base_height_inches / 2
+    local height_text = Settings.table_thickness * 2 + Settings.base_height_tabletop + Settings.base_height_inches / 2
 
     local sep = from_mm_to_in(300)
     local quadrant_columns = round(size_x / sep)
@@ -677,7 +677,7 @@ end
 function get_strokes_quadrants(strokes, color, size_x, size_z, w, h)
     local half_width = w / 2
     local half_depth = h / 2
-    local line_height = g_table_thickness + Settings.base_height_inches / 2
+    local line_height = Settings.table_thickness + Settings.base_height_inches / 2
 
     -- Vertical lines, every 30cm
     local sep = from_mm_to_in(300)
