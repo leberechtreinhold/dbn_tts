@@ -16,6 +16,7 @@ Settings.units = 1*100
 Settings.unit_str = 'paces'
 Settings.format_precision = '%.1f'
 Settings.table_thickness = 0.05
+Settings.default_use_3d_terrain = false
 
 Utils = DBX.Utils
 BasePicker = DBX.BasePicker:Create()
@@ -136,13 +137,6 @@ function onChat(message, player)
                 Logger.info('Debug mode ON')
             end, 3)
         end
-        return false
-    end
-
-    if message == '!dbn_3dterrain' then
-        Logger.info(player.get_steam_name() .. ': ' .. message)
-        g_use_3d_terrain = true
-        Logger.info('3D Terrain enabled, when doing a fix&lock on the table 3D objects will load.')
         return false
     end
 
