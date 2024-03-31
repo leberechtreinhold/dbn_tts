@@ -641,7 +641,7 @@ function draw_numbers_quadrant(size_x, size_z)
 
     local height_text = Settings.table_thickness * 2 + Settings.base_height_tabletop + Settings.base_height_inches / 2
 
-    local sep = from_mm_to_in(300)
+    local sep = Utils.from_mm_to_in(300)
     local quadrant_columns = round(size_x / sep)
     local quadrant_rows = round(size_z / sep) 
 
@@ -680,7 +680,7 @@ function get_strokes_quadrants(strokes, color, size_x, size_z, w, h)
     local line_height = Settings.table_thickness + Settings.base_height_inches / 2
 
     -- Vertical lines, every 30cm
-    local sep = from_mm_to_in(300)
+    local sep = Utils.from_mm_to_in(300)
 
     -- To calculate how many we need to use the actual size, but for the lines themselves we use
     -- scaled size since lines scale with the obj
