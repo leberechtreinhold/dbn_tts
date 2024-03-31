@@ -9,6 +9,7 @@
 DBX = require('../dbx_tts/main')
 Logger = DBX.Logger:Create()
 History = DBX.History
+Utils = DBX.Utils
 
 Settings = DBX.Settings
 Settings.module_name = 'dbn'
@@ -19,7 +20,6 @@ Settings.table_thickness = 0.05
 Settings.default_use_3d_terrain = false
 Settings.table_can_rotate = false
 
-Utils = DBX.Utils
 BasePicker = DBX.BasePicker:Create()
 DiceManager = DBX.DiceManager:Create()
 TerrainManager = DBX.TerrainManager:Create()
@@ -41,7 +41,7 @@ TerrainManager = DBX.TerrainManager:Create()
 
 function onload()
     Logger.info('----------------------------------------------')
-    Logger.info('                       DBN 2.1 v0.0.5 ')
+    Logger.info('                       DBN 2.1 v0.0.6 ')
     Logger.info('----------------------------------------------\n\nCheck the Notebook for instructions.')
 
     Wait.time(main_loop, Settings.seconds_main_loop, -1)
